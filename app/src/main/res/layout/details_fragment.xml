@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DetailsActivity">
+    tools:context="com.example.receipttracking.fragment.DetailsFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="text" />
+        android:text="details fragment"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
 
 </FrameLayout>
