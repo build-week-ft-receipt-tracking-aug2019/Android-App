@@ -5,7 +5,7 @@ class ReceiptsMockData() {
     companion object {
         var list = mutableListOf<Receipts>()
         fun fillList() {
-            //fullname,category,merchantname,cost,date,mockid,receiptimage
+            //fullname,category,merchantname,cost,date,mockid,receiptimageresource
             list.add(
                 Receipts(
                     "Gavrielle Willeson",
@@ -20,7 +20,13 @@ class ReceiptsMockData() {
 
             list.add(
                 Receipts(
-                    "Duff Lyddyard", "Movies", "Wintheiser-Von", 53.3, 1559594970, 2, 2
+                    "Duff Lyddyard",
+                    "Movies",
+                    "Wintheiser-Von",
+                    53.3,
+                    1559594970,
+                    2,
+                    2
                 )
             )
 
