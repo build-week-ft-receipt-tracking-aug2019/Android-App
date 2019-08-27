@@ -25,7 +25,6 @@ class Adapter(/* TODO Add list */) : RecyclerView.Adapter<Adapter.ViewHolder>() 
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(data[position])
-
     /*updates changes in RecyclerView*/
 
     fun swapData(data: List<Receipts>) {
