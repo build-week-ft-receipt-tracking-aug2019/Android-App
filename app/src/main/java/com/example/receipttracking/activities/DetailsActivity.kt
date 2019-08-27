@@ -6,6 +6,10 @@ import com.example.receipttracking.R
 
 class DetailsActivity : AppCompatActivity() {
 
+    companion object{
+        const val KEY_RECEIPT = "RECEIPT"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
