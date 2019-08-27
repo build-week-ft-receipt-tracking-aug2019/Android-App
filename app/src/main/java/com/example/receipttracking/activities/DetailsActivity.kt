@@ -41,7 +41,7 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
             //////remove it!
 
         val fragment =
-            DetailsFragment()
+            EditFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_holder, fragment)
             .commit()
