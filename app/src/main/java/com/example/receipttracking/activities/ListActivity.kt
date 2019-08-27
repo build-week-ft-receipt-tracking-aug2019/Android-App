@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.receipttracking.R
 import com.example.receipttracking.model.ReceiptsMockData.Companion.fillList
-import com.example.receipttracking.model.ReceiptsMockData.Companion.list
+import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
 
 class ListActivity : AppCompatActivity() {
 
@@ -13,9 +13,9 @@ class ListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list)
 
 
-        //fills list and printlns as sanity check
+        //fills receiptList and printlns as sanity check
         fillList()
-        println(list)
+        println(receiptList)
 
 
 

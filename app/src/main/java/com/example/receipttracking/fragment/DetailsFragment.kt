@@ -3,26 +3,71 @@ package com.example.receipttracking.fragment
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.receipttracking.R
+import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
+import kotlinx.android.synthetic.main.details_fragment.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [BlankFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [BlankFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
+
 class DetailsFragment : Fragment() {
+    /*
+    *  functions:
+    * populate(id)
+    * populates the fields based on the id provided
+    *
+    *
+    *
+    *
+    *
+    * */
+
+fun populate(id:Int) {
+
+    val id = arguments?.getInt(ITEM_KEY) ?: "Not a congressman"
+    Log.i("lognow", "id = $id")
+    //get the receipt object at the list id
+    var currentReceipt = receiptList[id]
+
+
+    ev_merchant_name
+    ev_category
+    ev_date
+    ev_amount
+    tv_mock_id
+    iv_receipt_image
+/*
+    val singleMemberDetails: CongresspersonDetails? = CongressDao.getMemberDetails(id)
+
+    if (singleMemberDetails != null) {
+
+        //twittercheck
+        var tweet = "${singleMemberDetails.firstName}  ${singleMemberDetails.lastName}"
+        if (singleMemberDetails.twitterAccount != null && singleMemberDetails.twitterAccount != "null") {
+            tweet += "\nTwitter account: ${singleMemberDetails.twitterAccount}"
+        }
+        tv_first_name.text = tweet
+
+
+        iv_drawable.setImageBitmap(CongressDao.getImage(id))*/
+    }
+}
+
+
+
+
+
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -49,6 +94,17 @@ class DetailsFragment : Fragment() {
         listener?.onDetailsFragmentInteraction(uri)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+btn_edit.setOnClickListener {
+    println("hello hello, hello everyone, this is popular music")
+}
+        /*btn_edit
+btn_return
+btn_previous
+btn_next*/
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnDetailsFragmentListener) {
@@ -63,17 +119,6 @@ class DetailsFragment : Fragment() {
         listener = null
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
     interface OnDetailsFragmentListener {
         // TODO: Update argument type and name
         fun onDetailsFragmentInteraction(uri: Uri)

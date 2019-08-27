@@ -9,6 +9,15 @@ import com.example.receipttracking.fragment.EditFragment
 import com.example.receipttracking.model.ReceiptsMockData
 
 class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentListener, EditFragment.OnEditFragmentListener {
+
+    companion object {
+        const val ID_TRANSFER = "1"
+        const val ADD_NEW_RECEIPT = "2"
+        const val EDIT_RECEIPT = "3"
+
+
+
+    }
     override fun onDetailsFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -25,7 +34,7 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
     *
     *   once we're stiching the two activities together, will have something like
     * if intent getstring "details"
-    * replace main frame with details fragment with list[getint]
+    * replace main frame with details fragment with receiptList[getint]
     * if (intent.getString "edit")
     * replace main frame with  edit fragment with the id provided in getint
     *  else if intent getstring "add"
@@ -37,7 +46,7 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
 
             //////remove this asap
         ReceiptsMockData.fillList()
-        println(ReceiptsMockData.list)
+        println(ReceiptsMockData.receiptList)
             //////remove it!
 
         val fragment =

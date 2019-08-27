@@ -3,10 +3,10 @@ package com.example.receipttracking.model
 
 class ReceiptsMockData() {
     companion object {
-        var list = mutableListOf<Receipts>()
+        var receiptList = mutableListOf<Receipts>()
         fun fillList() {
             //fullname,category,merchantname,cost,date,mockid,receiptimageresource
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Gavrielle Willeson",
                     "Automotive",
@@ -18,7 +18,7 @@ class ReceiptsMockData() {
                 )
             )
 
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Duff Lyddyard",
                     "Movies",
@@ -30,7 +30,7 @@ class ReceiptsMockData() {
                 )
             )
 
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Madelene Meldrum",
                     "Jewelery",
@@ -41,8 +41,8 @@ class ReceiptsMockData() {
                     3
                 )
             )
-            list.add(Receipts("Fedora Dewsnap", "Games", "Mosciski LLC", 231.05, 1555447238, 4, 4))
-            list.add(
+            receiptList.add(Receipts("Fedora Dewsnap", "Games", "Mosciski LLC", 231.05, 1555447238, 4, 4))
+            receiptList.add(
                 Receipts(
                     "Aland Streatfeild",
                     "Garden",
@@ -53,7 +53,7 @@ class ReceiptsMockData() {
                     5
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Giulia Cruces",
                     "Electronics",
@@ -64,7 +64,7 @@ class ReceiptsMockData() {
                     6
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Gregorius Popworth",
                     "Grocery",
@@ -75,7 +75,7 @@ class ReceiptsMockData() {
                     7
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Tabor Alenin",
                     "Home",
@@ -86,7 +86,7 @@ class ReceiptsMockData() {
                     8
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Carce Piris",
                     "Garden",
@@ -98,7 +98,7 @@ class ReceiptsMockData() {
                 )
             )
 
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Gibbie Blackaller",
                     "Home",
@@ -109,7 +109,7 @@ class ReceiptsMockData() {
                     10
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Wadsworth Zeplin",
                     "Baby",
@@ -120,7 +120,7 @@ class ReceiptsMockData() {
                     11
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Mabel Felten",
                     "Computers",
@@ -131,7 +131,7 @@ class ReceiptsMockData() {
                     12
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Craig Atkin",
                     "Clothing",
@@ -142,7 +142,7 @@ class ReceiptsMockData() {
                     13
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Jaquelyn Medmore",
                     "Shoes",
@@ -153,7 +153,7 @@ class ReceiptsMockData() {
                     14
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Foster Pyecroft",
                     "Home",
@@ -164,7 +164,7 @@ class ReceiptsMockData() {
                     15
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Darrin Cashin",
                     "Computers",
@@ -175,8 +175,8 @@ class ReceiptsMockData() {
                     16
                 )
             )
-            list.add(Receipts("Burnaby Nunn", "Shoes", "Lesch LLC", 36.12, 1550961934, 17, 17))
-            list.add(
+            receiptList.add(Receipts("Burnaby Nunn", "Shoes", "Lesch LLC", 36.12, 1550961934, 17, 17))
+            receiptList.add(
                 Receipts(
                     "Sande Husher",
                     "Outdoors",
@@ -187,7 +187,7 @@ class ReceiptsMockData() {
                     18
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Celesta Greenroa",
                     "Kids",
@@ -198,7 +198,7 @@ class ReceiptsMockData() {
                     19
                 )
             )
-            list.add(
+            receiptList.add(
                 Receipts(
                     "Leda Abotson",
                     "Music",
