@@ -1,5 +1,6 @@
 package com.example.receipttracking.activities
 
+
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,7 +31,8 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
-    /*
+
+/*
     *
     *   once we're stiching the two activities together, will have something like
     * if intent getstring "details"
@@ -43,6 +45,7 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
     *  error message or similar
     *
     * */
+
 
             //////remove this asap
         ReceiptsMockData.fillList()

@@ -33,18 +33,20 @@ class DetailsFragment : Fragment() {
 
 fun populate(id:Int) {
 
-    val id = arguments?.getInt(ITEM_KEY) ?: "Not a congressman"
+    val id = arguments?.getInt(ITEM_KEY) ?: 0
     Log.i("lognow", "id = $id")
     //get the receipt object at the list id
     var currentReceipt = receiptList[id]
 
 
-    ev_merchant_name
-    ev_category
-    ev_date
-    ev_amount
-    tv_mock_id
-    iv_receipt_image
+    tv_merchant_name.text = currentReceipt.merchantName
+    tv_category.text = currentReceipt.category
+    //TODO:proper formatting for date and money, should be able to grab a freeware class for both thrings -- or may be handled inkotlin alreayd
+    // either way come back to this
+    tv_date.text = currentReceipt.date.toString()
+    tv_amount.text = currentReceipt.cost.toString()
+    tv_mock_id.text =currentReceipt.mockID.toString()
+    iv_receipt_image.
 /*
     val singleMemberDetails: CongresspersonDetails? = CongressDao.getMemberDetails(id)
 
@@ -60,7 +62,7 @@ fun populate(id:Int) {
 
         iv_drawable.setImageBitmap(CongressDao.getImage(id))*/
     }
-}
+
 
 
 
