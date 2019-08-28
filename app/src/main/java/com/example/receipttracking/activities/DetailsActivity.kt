@@ -53,7 +53,7 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
             //////remove it!
 
         val fragment =
-            EditFragment()
+            DetailsFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_holder, fragment)
             .commit()
