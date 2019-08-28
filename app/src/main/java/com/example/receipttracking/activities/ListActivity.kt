@@ -3,9 +3,8 @@ package com.example.receipttracking.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.receipttracking.R
-import com.example.receipttracking.model.Receipts
-import com.example.receipttracking.model.ReceiptsMockData
 import com.example.receipttracking.model.ReceiptsMockData.Companion.fillList
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receipt_list
 import com.example.receipttracking.recyclerview.Adapter
@@ -19,12 +18,17 @@ class ListActivity : AppCompatActivity() {
 
 
         //fills receipt_list and printlns as sanity check
-       /*fillList()
-        println(receipt_list)*/
+       fillList()
 
-        recycler_view_holder.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@ListActivity)
+
+        recycler_view.apply {
+
+            /*val manager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+            adapter=Adapter(list)
+            recycle_view.layoutManager = manager
+            recycle_view.adapter = adapter*/
+
+            layoutManager = LinearLayoutManager(this@ListActivity, RecyclerView.VERTICAL, false)
             adapter = Adapter(receipt_list)
         }
 

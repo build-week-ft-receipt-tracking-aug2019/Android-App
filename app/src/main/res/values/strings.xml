@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Receipt Tracking</string>
+    <string name="add_receipt">Add Receipt</string>
 </resources>

@@ -3,19 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="5dp"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <TextView
-            android:id="@+id/tv_merchant_name"
-            android:text="testName"
-
+            android:id="@+id/tv_name"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="wrap_content"
@@ -23,17 +23,16 @@
 
         <TextView
             android:id="@+id/tv_amount"
-            app:layout_constraintTop_toBottomOf="@id/tv_merchant_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="testAmount" />
+            />
 
         <TextView
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="testDate"
-            app:layout_constraintRight_toRightOf="parent"
             android:id="@+id/tv_date"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 

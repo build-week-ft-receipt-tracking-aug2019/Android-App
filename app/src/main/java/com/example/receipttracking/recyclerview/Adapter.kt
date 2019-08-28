@@ -1,10 +1,6 @@
 package com.example.receipttracking.recyclerview
 
 
-import android.app.Activity
-import android.app.ActivityOptions
-import android.content.Intent
-import android.os.Bundle
 import com.example.receipttracking.R
 import com.example.receipttracking.model.Receipts
 import android.view.LayoutInflater
@@ -13,19 +9,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.receipttracking.activities.DetailsActivity
 import kotlinx.android.synthetic.main.activity_items_list.view.*
-import java.util.*
 
 
-class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Adapter.viewHolder>() {
-
-    private var data: List<Receipts> = ArrayList()
+class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
 
-    class viewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val card: CardView = view.card_view
-        val textViewName: TextView = view.tv_merchant_name
+        val textViewName: TextView = view.tv_name
         val textViewAmount: TextView = view.tv_amount
         val textViewDate: TextView = view.tv_date
 
@@ -42,32 +35,32 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        return viewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.activity_list, parent, false) as View
+                .inflate(R.layout.activity_items_list, parent, false) as View
         )
     }
 
-    override fun getItemCount() = data.size
+    override fun getItemCount() = receiptList.size
 
-    override fun onBindViewHolder(viewHolder: viewHolder, position: Int) {
+    override fun onBindViewHolder(ViewHolder: ViewHolder, position: Int) {
         val receipt = receiptList[position]
-        viewHolder.bindModel(receipt)
+        ViewHolder.bindModel(receipt)
 
-        viewHolder.card.setOnClickListener { view ->
+       /* ViewHolder.card.setOnClickListener { view ->
 
             val intent = Intent(view.context, DetailsActivity::class.java)
             intent.putExtra(DetailsActivity.KEY_RECEIPT, receipt)
 
             val optionsBundle: Bundle = ActivityOptions.makeSceneTransitionAnimation(
-                view.context as Activity, viewHolder.textViewName,
+                view.context as Activity, ViewHolder.textViewName,
                 "tv_merchant_name"
             ).toBundle()
             view.context.startActivity(intent, optionsBundle)
 
 
-        }
+        }*/
 
     }
 
