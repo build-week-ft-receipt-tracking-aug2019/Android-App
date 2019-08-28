@@ -59,7 +59,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
        ViewHolder.card.setOnClickListener { view ->
 
             val intent = Intent(view.context, DetailsActivity::class.java)
-            intent.putExtra(DetailsActivity.ADD_NEW_RECEIPT, position)
+            intent.putExtra(DetailsActivity.EDIT_RECEIPT, position)
 
             val optionsBundle: Bundle = ActivityOptions.makeSceneTransitionAnimation(
                 view.context as Activity, ViewHolder.textViewName,

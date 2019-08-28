@@ -36,10 +36,10 @@
         />
 
     <TextView
-        android:id="@+id/textView_welcome"
+        android:id="@+id/receipt_keeps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcome"
+        android:text="@string/receipt_keeps"
         android:textColor="@android:color/white"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/button_login"
-        android:layout_below="@id/textView_welcome"
+        android:layout_below="@id/receipt_keeps"
         android:gravity="center"
         android:orientation="vertical">
 
