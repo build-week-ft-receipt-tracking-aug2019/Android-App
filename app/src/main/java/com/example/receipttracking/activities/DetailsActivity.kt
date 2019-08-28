@@ -11,11 +11,11 @@ import com.example.receipttracking.model.ReceiptsMockData
 
 class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentListener, EditFragment.OnEditFragmentListener {
 
-   companion object {
+    companion object {
         const val ID_TRANSFER = "1"
         const val ADD_NEW_RECEIPT = "2"
         const val EDIT_RECEIPT = "3"
-       const val KEY_RECEIPT = "RECEIPT"
+        const val KEY_RECEIPT = "RECEIPT"
 
 
     }

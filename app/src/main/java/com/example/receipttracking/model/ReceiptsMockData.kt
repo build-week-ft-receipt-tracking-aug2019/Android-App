@@ -8,7 +8,7 @@ class ReceiptsMockData() {
         fun fillList() {
             //fullname,category,merchantname,cost,date,mockid,receiptimageresource
             receiptList.add(
-                Receipts(
+             Receipts(
                     "Gavrielle Willeson",
                     "Automotive",
                     "Auer LLC",
@@ -44,18 +44,7 @@ class ReceiptsMockData() {
                     3
                 )
             )
-            receiptList.add(
-                Receipts(
-                    "Fedora Dewsnap",
-                    "Games",
-                    "Mosciski LLC",
-                    231.05,
-                    1555447238,
-                    4,
-                    4
-                )
-            )
-
+            receiptList.add(Receipts("Fedora Dewsnap", "Games", "Mosciski LLC", 231.05, 1555447238, 4, 4))
             receiptList.add(
                 Receipts(
                     "Aland Streatfeild",
@@ -146,7 +135,7 @@ class ReceiptsMockData() {
             )
 
             receiptList.add(
-                Receipts(
+     Receipts(
                     "Mabel Felten",
                     "Computers",
                     "Denesik Inc",
@@ -158,7 +147,7 @@ class ReceiptsMockData() {
             )
 
             receiptList.add(
-                Receipts(
+    Receipts(
                     "Craig Atkin",
                     "Clothing",
                     "Carter, McCullough and Senger",
@@ -170,7 +159,7 @@ class ReceiptsMockData() {
             )
 
             receiptList.add(
-                Receipts(
+        Receipts(
                     "Jaquelyn Medmore",
                     "Shoes",
                     "McLaughlin and Sons",
@@ -182,7 +171,7 @@ class ReceiptsMockData() {
             )
 
             receiptList.add(
-                Receipts(
+         Receipts(
                     "Foster Pyecroft",
                     "Home",
                     "Green, Gusikowski and Funk",
@@ -194,7 +183,7 @@ class ReceiptsMockData() {
             )
 
             receiptList.add(
-                Receipts(
+        Receipts(
                     "Darrin Cashin",
                     "Computers",
                     "Borer, Hartmann and Block",
@@ -205,19 +194,9 @@ class ReceiptsMockData() {
                 )
             )
 
+            receiptList.add(Receipts("Burnaby Nunn", "Shoes", "Lesch LLC", 36.12, 1550961934, 17, 17))
             receiptList.add(
-                Receipts(
-                    "Burnaby Nunn",
-                    "Shoes",
-                    "Lesch LLC",
-                    36.12,
-                    1550961934,
-                    17,
-                    17
-                )
-            )
-            receiptList.add(
-                Receipts(
+Receipts(
                     "Sande Husher",
                     "Outdoors",
                     "Witting, Kertzmann and Lockman",
