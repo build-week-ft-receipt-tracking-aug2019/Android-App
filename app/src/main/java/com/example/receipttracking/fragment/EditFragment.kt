@@ -8,6 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.receipttracking.R
+import com.example.receipttracking.model.Receipts
+import com.example.receipttracking.model.ReceiptsMockData
+import kotlinx.android.synthetic.main.details_fragment.*
+import kotlinx.android.synthetic.main.details_fragment.iv_receipt_image
+import kotlinx.android.synthetic.main.details_fragment.tv_mock_id
+import kotlinx.android.synthetic.main.edit_fragment.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +33,29 @@ class EditFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnEditFragmentListener? = null
+
+
+
+    fun populate(id:Int) {
+
+
+        //get the receipt object at the list id
+        var currentReceipt = ReceiptsMockData.receiptList[id] as Receipts
+
+        ev_merchant_name.hint = currentReceipt.merchantName
+        ev_category.hint = currentReceipt.category
+        //TODO:proper formatting for date and money, should be able to grab a freeware class for both thrings -- or may be handled inkotlin alreayd
+        // either way come back to this
+        ev_date.hint = currentReceipt.date.toString()
+        ev_amount.hint = currentReceipt.cost.toString()
+        tv_mock_id.hint =currentReceipt.mockID.toString()
+        //TODO: return here once we get images for rceipts
+        iv_receipt_image.setImageResource(R.drawable.ic_launcher_foreground)
+
+    }
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -39,7 +39,6 @@
                 //get the receipt object at the list id
                 var currentReceipt = receiptList[id]
 
-
                 tv_merchant_name.text = currentReceipt.merchantName
                 tv_category.text = currentReceipt.category
                 //TODO:proper formatting for date and money, should be able to grab a freeware class for both thrings -- or may be handled inkotlin alreayd
@@ -50,13 +49,7 @@
                 //TODO: return here once we get images for rceipts
                 iv_receipt_image.setImageResource(R.drawable.ic_launcher_foreground)
 
-
             }
-
-
-
-
-
 
 
 
@@ -91,24 +84,36 @@
                 var newID =0
 
                 //todo:change to id once argument setters are in place
-                populate(4)
+                populate(18)
               btn_previous.setOnClickListener {
                   if (id>=1){
-                      
+                      id--
                   }
-
+                  else {
+                      id=receiptList.size-1
+                  }
+                  populate(id)
               }
-
+                btn_next.setOnClickListener {
+                    if (id < receiptList.size && id !=  receiptList.size){
+                        id++
+                    }
+                    else {
+                        id=0
+                    }
+                    populate(id)
+                }
 
                 btn_edit.setOnClickListener {
                     println("hello hello, hello everyone, this is popular music")
                 }
 
 
-                /*btn_edit
-        btn_return
-        btn_previous
-        btn_next*/
+                /*
+                btn_edit
+        btn_return*/
+
+
                 super.onViewCreated(view, savedInstanceState)
             }
 
