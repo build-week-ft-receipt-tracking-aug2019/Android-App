@@ -9,6 +9,7 @@
         import android.view.LayoutInflater
         import android.view.View
         import android.view.ViewGroup
+        import androidx.core.net.toUri
         import com.example.receipttracking.R
         import com.example.receipttracking.activities.DetailsActivity.Companion.EDIT_RECEIPT
         import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
@@ -44,8 +45,14 @@
                 tv_date.text = currentReceipt.date.toString()
                 tv_amount.text = currentReceipt.cost.toString()
                 tv_mock_id.text =currentReceipt.mockID.toString()
-                //TODO: return here once we get images for rceipts
-                iv_receipt_image.setImageResource(currentReceipt.receiptImageResource)
+
+                //if it's a mock receipt/no image specified set as appropriate resource file, otherwise set as uri
+                if(currentReceipt.receiptImage != 0) {
+                    iv_receipt_image.setImageResource(currentReceipt.receiptImage)
+                }
+                else {
+                    iv_receipt_image.setImageURI(currentReceipt.receiptImageURI.toUri())
+                }
 
             }
 
@@ -104,10 +111,10 @@
 
                 btn_edit.setOnClickListener {
                     //s
-                    val fragment = EditFragment()
-                    val bundle = Bundle()
-                    bundle.putInt(EDIT_RECEIPT,id)
-                    fragment.setArguments(bundle)
+                    val fragment = EditFragment.newInstance(id,null)
+                   // val bundle = Bundle()
+                    //bundle.putInt(EDIT_RECEIPT,id)
+                  //  fragment.setArguments(bundle)
                     val transaction = fragmentManager!!.beginTransaction()
                     transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
                     transaction.addToBackStack(null)
@@ -164,20 +171,3 @@
                     }
             }
         }
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BlankFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        //  @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
