@@ -43,7 +43,7 @@ class ReceiptsMockData() {
                     3,
                     3
                 )
-       
+            )
             receiptList.add(Receipts("Fedora Dewsnap", "Games", "Mosciski LLC", 231.05, 1555447238, 4, 4))
             receiptList.add(
                 Receipts(
