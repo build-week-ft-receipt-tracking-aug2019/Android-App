@@ -27,6 +27,10 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    companion object{
+        const val KEY_RECEIPT = "RECEIPT"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)

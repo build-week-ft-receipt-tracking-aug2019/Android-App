@@ -1,8 +1,9 @@
 package com.example.receipttracking.model
 
+import java.io.Serializable
 import java.util.*
 
-data class Receipts (
+data class Receipts(
     var fullName:String,
     var category:String,
     var merchantName:String,
@@ -10,4 +11,4 @@ data class Receipts (
     var date: Long,
     var mockID:Int,
     var receiptImage:Int
-)
+) : Serializable
