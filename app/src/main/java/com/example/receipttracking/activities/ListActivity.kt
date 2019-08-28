@@ -17,6 +17,8 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
+
+
         fillList()
         println(receiptList)
         recycler_view.apply {
@@ -27,6 +29,9 @@ class ListActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@ListActivity, RecyclerView.VERTICAL, false)
             adapter = Adapter(receiptList)
         }
+
+
+
 
 
 

@@ -1,7 +1,10 @@
 package com.example.receipttracking.recyclerview
 
 
-import com.example.receipttracking.R
+import android.app.Activity
+import android.app.ActivityOptions
+import android.content.Intent
+import android.os.Bundle
 import com.example.receipttracking.model.Receipts
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +12,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.receipttracking.R
 import kotlinx.android.synthetic.main.activity_items_list.view.*
+import com.example.receipttracking.activities.DetailsActivity
+
+
+
 
 
 class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
@@ -48,10 +56,10 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
         val receipt = receiptList[position]
         ViewHolder.bindModel(receipt)
 
-       /* ViewHolder.card.setOnClickListener { view ->
+       ViewHolder.card.setOnClickListener { view ->
 
             val intent = Intent(view.context, DetailsActivity::class.java)
-            intent.putExtra(DetailsActivity.KEY_RECEIPT, receipt)
+            intent.putExtra(DetailsActivity.ADD_NEW_RECEIPT, position)
 
             val optionsBundle: Bundle = ActivityOptions.makeSceneTransitionAnimation(
                 view.context as Activity, ViewHolder.textViewName,
@@ -60,7 +68,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
             view.context.startActivity(intent, optionsBundle)
 
 
-        }*/
+        }
 
     }
 

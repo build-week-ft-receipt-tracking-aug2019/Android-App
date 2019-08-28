@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Receipt Tracking</string>
     <string name="add_receipt">Add Receipt</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="image_of_a_receipt">Image of a receipt</string>
+    <string name="welcome">Welcome</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login">Login</string>
+    <string name="skip">Skip</string>
 </resources>
