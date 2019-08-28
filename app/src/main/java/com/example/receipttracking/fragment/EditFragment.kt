@@ -32,8 +32,7 @@ class EditFragment : Fragment() {
     private var newID: Int? = null ?: -1
     private var NEW_ITEM_FLAG = false
     private var listener: OnEditFragmentListener? = null
-    private var ITEM_URI = null
-    private var uriS = null
+    private var uriS:String = ""
 
     fun populate(id:Int) {
         //get the receipt object at the list id
@@ -55,20 +54,35 @@ class EditFragment : Fragment() {
         else {
             iv_receipt_image.setImageURI(currentReceipt.receiptImageURI.toUri())
         }
-
     }
 
-/*    fun saveChanges(id:Int) {
-        //this may eventually have data sanity checks and perhaps a dialog box to communicate with user
-        var newReceipt:Receipts
+
+ fun saveChanges(id:Int) {
+     //this may eventually have data sanity checks and perhaps a dialog box to communicate with user
+     /*
         var fullName:String,
         var category:String,
         var merchantName:String,
         var cost:Double,
         var date: Long,
         var mockID:Int,
-        var receiptImage:Int
-    }*/
+        var receiptImage:Int*/
+     //update once we have formating
+     var date: Long = 165655644 //ev_date,
+     var cost: Double = 45.12 // ev_amount
+     var newReceipt = Receipts(
+         "",
+         ev_category.text.toString(),
+         ev_merchant_name.text.toString(),
+         cost,
+         date,
+         id,
+         0,
+         uriS)
+     receiptList.add(id,newReceipt)
+ }
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,11 +104,8 @@ class EditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        if (newID != -1) {
-            newID = receiptList.size
-            NEW_ITEM_FLAG=true
-        }
-        else if (id != -1) { // else if and else are likely redundant
+
+        if (id != -1) { // else if and else are likely redundant
             populate(id as Int)
             NEW_ITEM_FLAG=false
         }
@@ -104,12 +115,13 @@ class EditFragment : Fragment() {
         }
 
         btn_submit.setOnClickListener {
-           if (NEW_ITEM_FLAG) {
-
-
-           }
+            if (id != -1) {
+                saveChanges(id as Int)
+            }
+            else {
+                saveChanges(newID as Int)
+            }
         }
-
 
 
         btn_edit_image.setOnClickListener {
@@ -163,6 +175,7 @@ class EditFragment : Fragment() {
             resultData?.data?.also { uri ->
                 Log.i("2legs", "Uri: $uri")
                 iv_receipt_image.setImageURI(uri)
+                uriS = uri.toString()
                // showImage(uri)
             }
         }
@@ -204,14 +217,6 @@ class EditFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BlankFragment.
-         */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(editId: Int, new: Int?) =

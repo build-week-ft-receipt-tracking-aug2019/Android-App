@@ -90,6 +90,7 @@
 
                 //todo:change to id once argument setters are in place
                 populate(18)
+
               btn_previous.setOnClickListener {
                   if (id>=1){
                       id--

@@ -1,6 +1,7 @@
 package com.example.receipttracking.activities
 
 
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,21 +18,10 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
     *
     *
     *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
-    *
+
     *
     *
     * */
-
-
 
 
 
@@ -70,6 +60,11 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
     *  error message or similar
     *
     * */
+
+        var newReceipt = intent.extras?.getInt(ADD_NEW_RECEIPT, -1)  ?: -1
+        var editReceipt = intent.extras?.getInt(EDIT_RECEIPT, -1)  ?: -1
+
+        ///TODO: add fragment launcher logic here
 
 
             //////remove this asap
