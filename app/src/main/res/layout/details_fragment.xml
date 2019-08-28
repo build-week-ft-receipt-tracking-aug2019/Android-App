@@ -1,14 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DetailsActivity">
+    tools:context="com.example.receipttracking.fragment.DetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="text" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_merchant_name"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="Merchant Name"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cl" />
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="category"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/ev_date"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_merchant_name" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="date"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_category" />
+
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Amount"
+            android:textSize="30dp"
+            android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/tv_date"
+        app:layout_constraintLeft_toLeftOf="@id/cl"
+            app:layout_constraintRight_toRightOf="@id/cl"/>
+
+
+        <TextView
+            android:id="@+id/tv_mock_id"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="MockID"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/iv_receipt_image"
+            app:layout_constraintRight_toRightOf="@id/cl"
+          app:layout_constraintLeft_toLeftOf="@id/cl" />
+
+        <ImageView
+            android:id="@+id/iv_receipt_image"
+            android:layout_width="250dp"
+            android:layout_height="420dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_background"
+            android:text="Receipt Image"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/btn_edit"
+            app:layout_constraintLeft_toLeftOf="@id/cl"
+            app:layout_constraintRight_toRightOf="@id/cl"
+         />
+
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Edit Receipt"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_return"
+            app:layout_constraintLeft_toLeftOf="@id/cl"
+            app:layout_constraintRight_toRightOf="@id/cl" />
+
+        <Button
+            android:id="@+id/btn_return"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="return to list"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@id/cl"
+            app:layout_constraintLeft_toLeftOf="@id/cl"
+            app:layout_constraintRight_toRightOf="@id/cl" />
+
+        <!--replace these next two with custom animatables-->
+        <Button
+            android:id="@+id/btn_previous"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Previous Receipt"
+            android:textSize="10dp"
+            app:layout_constraintLeft_toLeftOf="@id/cl"
+      app:layout_constraintBottom_toBottomOf="@id/cl" />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Next Receipt"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/cl"
+            app:layout_constraintRight_toRightOf="@id/cl"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>
