@@ -21,6 +21,11 @@ import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
 import kotlinx.android.synthetic.main.details_fragment.iv_receipt_image
 import kotlinx.android.synthetic.main.details_fragment.tv_mock_id
 import kotlinx.android.synthetic.main.edit_fragment.*
+import java.text.SimpleDateFormat
+import java.util.*
+
+
+
 
 
 
@@ -33,6 +38,30 @@ class EditFragment : Fragment() {
     private var NEW_ITEM_FLAG = false
     private var listener: OnEditFragmentListener? = null
     private var uriS:String = ""
+    fun fromDateLong(timeStampStr:Long):String{
+        try {
+            val sdf = SimpleDateFormat("MM/dd/yyyy")
+            val netDate = Date(timeStampStr * 1000)
+
+            return sdf.format(netDate)
+        } catch (ex: Exception) {
+            return timeStampStr.toString()
+        }
+    }
+fun toDateLong(input:String) {
+    val sdf = SimpleDateFormat("MM/dd/yyyy")
+    var epoch =
+        java.text.SimpleDateFormat("MM/dd/yyyy").parse(sdf.format(input))!!.time / 1000
+    println(epoch)
+}
+
+
+/*
+    val sdf = SimpleDateFormat("MM/dd/yyyy", "US")
+
+    val netDate = Date().getTime()
+    var unixTime = System.currentTimeMillis() / 1000L
+*/
 
     fun populate(id:Int) {
         //get the receipt object at the list id
@@ -42,7 +71,7 @@ class EditFragment : Fragment() {
         ev_category.setText(currentReceipt.category)
         //TODO:proper formatting for date and money, should be able to grab a freeware class for both thrings -- or may be handled inkotlin alreayd
         // either way come back to this
-        ev_date.setText(currentReceipt.date.toString())
+        ev_date.setText(fromDateLong(currentReceipt.date)).toString()
         ev_amount.setText(currentReceipt.cost.toString())
         tv_mock_id.text =currentReceipt.mockID.toString()
         //TODO: return here once we get images for rceipts
