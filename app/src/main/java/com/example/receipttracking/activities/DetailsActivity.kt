@@ -41,7 +41,7 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
         const val ADD_NEW_RECEIPT = "2"
         const val EDIT_RECEIPT = "3"
         const val KEY_RECEIPT = "RECEIPT"
-
+        const val READ_REQUEST_CODE: Int = 31337
 
     }
     override fun onDetailsFragmentInteraction(uri: Uri) {

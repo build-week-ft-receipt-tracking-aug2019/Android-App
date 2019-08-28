@@ -79,24 +79,24 @@
             android:text="Receipt Image"
             android:textSize="20dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/btn_edit"
+            app:layout_constraintBottom_toTopOf="@id/btn_edit_image"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl"
             />
 
 
         <Button
-            android:id="@+id/btn_edit"
+            android:id="@+id/btn_edit_image"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="Edit/Add Receipt Image"
             android:textSize="14dp"
-            app:layout_constraintBottom_toTopOf="@id/btn_return"
+            app:layout_constraintBottom_toTopOf="@id/btn_submit"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl" />
 
         <Button
-            android:id="@+id/btn_return"
+            android:id="@+id/btn_submit"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="Confirm Changes"
@@ -105,9 +105,9 @@
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl" />
 
-        <!--replace these next two with custom animatables-->
+        <!-- previous and next buttons cut as of 9:44 on the 28th
         <Button
-            android:id="@+id/btn_previous"
+            android:id="@+id/btn_previous_edit"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="Previous Receipt"
@@ -116,14 +116,14 @@
             app:layout_constraintBottom_toBottomOf="@id/cl" />
 
         <Button
-            android:id="@+id/btn_next"
+            android:id="@+id/btn_next_edit"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:text="Next Receipt"
             android:textSize="10dp"
             app:layout_constraintBottom_toBottomOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl"/>
-
+-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

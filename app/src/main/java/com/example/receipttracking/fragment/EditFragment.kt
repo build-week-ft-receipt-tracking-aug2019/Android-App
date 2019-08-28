@@ -1,15 +1,22 @@
 package com.example.receipttracking.fragment
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.receipttracking.R
+import com.example.receipttracking.activities.DetailsActivity.Companion.ADD_NEW_RECEIPT
+import com.example.receipttracking.activities.DetailsActivity.Companion.EDIT_RECEIPT
+import com.example.receipttracking.activities.DetailsActivity.Companion.READ_REQUEST_CODE
 import com.example.receipttracking.model.Receipts
 import com.example.receipttracking.model.ReceiptsMockData
+import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
 import kotlinx.android.synthetic.main.details_fragment.*
 import kotlinx.android.synthetic.main.details_fragment.iv_receipt_image
 import kotlinx.android.synthetic.main.details_fragment.tv_mock_id
@@ -19,6 +26,7 @@ import kotlinx.android.synthetic.main.edit_fragment.*
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+private var NEW_ITEM_FLAG = false
 
 /**
  * A simple [Fragment] subclass.
@@ -37,8 +45,6 @@ class EditFragment : Fragment() {
 
 
     fun populate(id:Int) {
-
-
         //get the receipt object at the list id
         var currentReceipt = ReceiptsMockData.receiptList[id] as Receipts
 
@@ -73,7 +79,100 @@ class EditFragment : Fragment() {
         return inflater.inflate(R.layout.edit_fragment, container, false)
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        var id = arguments?.getInt(EDIT_RECEIPT) ?: -1
+        var newID = arguments?.getInt(ADD_NEW_RECEIPT) ?: -1
+        if (newID != -1) {
+            newID = receiptList.size
+            NEW_ITEM_FLAG=true
+        }
+        else if (id != -1) { // else if and else are likely redundant
+            NEW_ITEM_FLAG=false
+        }
+        else {  //this should never trigger
+            newID = receiptList.size
+            NEW_ITEM_FLAG=true
+        }
+
+
+
+
+
+
+        /*
+                *   Code for previous and next buttons,
+                *   cut as of 9:43am on the 28th,
+                *   can we add relatively trivially
+        btn_previous_edit.setOnClickListener {
+            if (id>=1){
+                id--
+            }
+            else {
+                id=receiptList.size-1
+            }
+            populate(id)
+        }
+        btn_next_edit.setOnClickListener {
+            if (id < receiptList.size -1){
+                id++
+            }
+            else {
+                id=0
+            }
+            populate(id)
+        }
+*/
+
+        btn_submit.setOnClickListener {
+            //s
+            val fragment = EditFragment()
+            val bundle = Bundle()
+            bundle.putInt(EDIT_RECEIPT, id)
+            fragment.setArguments(bundle)
+            val transaction = fragmentManager!!.beginTransaction()
+            transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+
+
+        btn_edit_image.setOnClickListener {
+            /*
+             * Fires an intent to spin up the "file chooser" UI and select an image.
+             */
+            fun performFileSearch() {
+
+                val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+                    addCategory(Intent.CATEGORY_OPENABLE)
+                    type = "image/*"
+                }
+                    // all code Intent.ACTION_OPEN_DOCUMENT
+                startActivityForResult(intent, READ_REQUEST_CODE)
+            }
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+
+        // The ACTION_OPEN_DOCUMENT intent was sent with the request code
+        // READ_REQUEST_CODE. If the request code seen here doesn't match, it's the
+        // response to some other intent, and the code below shouldn't run at all.
+
+        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            // The document selected by the user won't be returned in the intent.
+            // Instead, a URI to that document will be contained in the return intent
+            // provided to this method as a parameter.
+            // Pull that URI using resultData.getData().
+            resultData?.data?.also { uri ->
+                Log.i("2 legit 2 legit 2 quit", "Uri: $uri")
+               // showImage(uri)
+            }
+        }
+    }
+
+        // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
         listener?.onEditFragmentInteraction(uri)
     }

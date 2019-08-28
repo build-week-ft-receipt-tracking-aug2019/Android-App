@@ -2,17 +2,20 @@
         package com.example.receipttracking.fragment
 
         import android.content.Context
+        import android.content.Intent
         import android.net.Uri
         import android.os.Bundle
-        import android.util.Log
         import androidx.fragment.app.Fragment
         import android.view.LayoutInflater
         import android.view.View
         import android.view.ViewGroup
-        import androidx.core.content.ContextCompat
         import com.example.receipttracking.R
+        import com.example.receipttracking.activities.DetailsActivity.Companion.EDIT_RECEIPT
         import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
         import kotlinx.android.synthetic.main.details_fragment.*
+        import com.example.receipttracking.activities.ListActivity
+
+
 
         // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,15 +29,10 @@
             *  functions:
             * populate(id)
             * populates the fields based on the id provided
-            *
-            *
-            *
-            *
-            *
+            * exists as an object itself in order to allow previous/next functionality
             * */
 
             fun populate(id:Int) {
-
 
                 //get the receipt object at the list id
                 var currentReceipt = receiptList[id]
@@ -48,7 +46,6 @@
                 tv_mock_id.text =currentReceipt.mockID.toString()
                 //TODO: return here once we get images for rceipts
                 iv_receipt_image.setImageResource(R.drawable.ic_launcher_foreground)
-
             }
 
 
@@ -95,7 +92,7 @@
                   populate(id)
               }
                 btn_next.setOnClickListener {
-                    if (id < receiptList.size && id !=  receiptList.size){
+                    if (id < receiptList.size -1){
                         id++
                     }
                     else {
@@ -105,13 +102,23 @@
                 }
 
                 btn_edit.setOnClickListener {
-                    println("hello hello, hello everyone, this is popular music")
+                    //s
+                    val fragment = EditFragment()
+                    val bundle = Bundle()
+                    bundle.putInt(EDIT_RECEIPT,id)
+                    fragment.setArguments(bundle)
+                    val transaction = fragmentManager!!.beginTransaction()
+                    transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
                 }
 
 
-                /*
-                btn_edit
-        btn_return*/
+
+                 btn_return.setOnClickListener {
+                     val intent = Intent(view.context, ListActivity::class.java)
+                     startActivity(intent)
+                 }
 
 
                 super.onViewCreated(view, savedInstanceState)
