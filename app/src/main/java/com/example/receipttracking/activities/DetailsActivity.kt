@@ -11,11 +11,11 @@ import com.example.receipttracking.model.ReceiptsMockData
 
 class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentListener, EditFragment.OnEditFragmentListener {
 
-    companion object {
+   companion object {
         const val ID_TRANSFER = "1"
         const val ADD_NEW_RECEIPT = "2"
         const val EDIT_RECEIPT = "3"
-
+       const val KEY_RECEIPT = "RECEIPT"
 
 
     }
@@ -25,10 +25,6 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
 
     override fun onEditFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    companion object{
-        const val KEY_RECEIPT = "RECEIPT"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
