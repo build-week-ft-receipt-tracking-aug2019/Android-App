@@ -45,7 +45,8 @@
                 tv_amount.text = currentReceipt.cost.toString()
                 tv_mock_id.text =currentReceipt.mockID.toString()
                 //TODO: return here once we get images for rceipts
-                iv_receipt_image.setImageResource(R.drawable.ic_launcher_foreground)
+                iv_receipt_image.setImageResource(currentReceipt.receiptImageResource)
+
             }
 
 
