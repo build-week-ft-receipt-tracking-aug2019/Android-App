@@ -10,5 +10,6 @@ data class Receipts(
     var cost:Double,
     var date: Long,
     var mockID:Int,
-    var receiptImage:Int
+    var receiptImageResource:Int,
+    var receiptImageURI: String
 ) : Serializable

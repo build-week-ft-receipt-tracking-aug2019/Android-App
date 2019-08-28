@@ -28,6 +28,16 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 private var NEW_ITEM_FLAG = false
 
+
+     /*
+    *   TODO: stretch goal: sanity check data saved or added
+    *
+    *
+    * */
+
+
+
+
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
@@ -60,8 +70,27 @@ class EditFragment : Fragment() {
 
     }
 
+/*    fun saveChanges(id:Int) {
+        //this may eventually have data sanity checks and perhaps a dialog box to communicate with user
+        var newReceipt:Receipts
+        var fullName:String,
+        var category:String,
+        var merchantName:String,
+        var cost:Double,
+        var date: Long,
+        var mockID:Int,
+        var receiptImage:Int
+    }*/
 
+    fun performFileSearch() {
 
+        val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+            //  addCategory(Intent.CATEGORY_OPENABLE)
+            type = "image/*"
+        }
+        // all code Intent.ACTION_OPEN_DOCUMENT
+        startActivityForResult(intent, READ_REQUEST_CODE)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,6 +123,21 @@ class EditFragment : Fragment() {
             NEW_ITEM_FLAG=true
         }
 
+        btn_submit.setOnClickListener {
+           if (NEW_ITEM_FLAG) {
+
+
+           }
+        }
+
+
+
+        btn_edit_image.setOnClickListener {
+            /*
+             * Fires an intent to spin up the "file chooser" UI and select an image.
+             */
+            performFileSearch()
+        }
 
 
 
@@ -123,34 +167,7 @@ class EditFragment : Fragment() {
         }
 */
 
-        btn_submit.setOnClickListener {
-            //s
-            val fragment = EditFragment()
-            val bundle = Bundle()
-            bundle.putInt(EDIT_RECEIPT, id)
-            fragment.setArguments(bundle)
-            val transaction = fragmentManager!!.beginTransaction()
-            transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
 
-
-
-        btn_edit_image.setOnClickListener {
-            /*
-             * Fires an intent to spin up the "file chooser" UI and select an image.
-             */
-            fun performFileSearch() {
-
-                val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
-                    addCategory(Intent.CATEGORY_OPENABLE)
-                    type = "image/*"
-                }
-                    // all code Intent.ACTION_OPEN_DOCUMENT
-                startActivityForResult(intent, READ_REQUEST_CODE)
-            }
-        }
 
     }
 
@@ -166,7 +183,8 @@ class EditFragment : Fragment() {
             // provided to this method as a parameter.
             // Pull that URI using resultData.getData().
             resultData?.data?.also { uri ->
-                Log.i("2 legit 2 legit 2 quit", "Uri: $uri")
+                Log.i("2legs", "Uri: $uri")
+                iv_receipt_image.setImageURI(uri)
                // showImage(uri)
             }
         }
