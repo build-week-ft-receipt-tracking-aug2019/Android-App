@@ -2,43 +2,41 @@
         package com.example.receipttracking.fragment
 
         import android.content.Context
+        import android.content.Intent
         import android.net.Uri
         import android.os.Bundle
-        import android.util.Log
         import androidx.fragment.app.Fragment
         import android.view.LayoutInflater
         import android.view.View
         import android.view.ViewGroup
-        import androidx.core.content.ContextCompat
+        import androidx.core.net.toUri
         import com.example.receipttracking.R
+        import com.example.receipttracking.activities.DetailsActivity.Companion.EDIT_RECEIPT
         import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
         import kotlinx.android.synthetic.main.details_fragment.*
+        import com.example.receipttracking.activities.ListActivity
+
+
 
         // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private const val ARG_PARAM1 = "param1"
-        private const val ARG_PARAM2 = "param2"
-
+        private const val DETAILS_ID_PARAM = "ID"
+        private var detailsID = 0
 
 
         class DetailsFragment : Fragment() {
+
             /*
             *  functions:
             * populate(id)
             * populates the fields based on the id provided
-            *
-            *
-            *
-            *
-            *
+            * exists as an object itself in order to allow previous/next functionality
             * */
 
             fun populate(id:Int) {
 
-
                 //get the receipt object at the list id
                 var currentReceipt = receiptList[id]
-
 
                 tv_merchant_name.text = currentReceipt.merchantName
                 tv_category.text = currentReceipt.category
@@ -47,29 +45,27 @@
                 tv_date.text = currentReceipt.date.toString()
                 tv_amount.text = currentReceipt.cost.toString()
                 tv_mock_id.text =currentReceipt.mockID.toString()
-                //TODO: return here once we get images for rceipts
-                iv_receipt_image.setImageResource(R.drawable.ic_launcher_foreground)
 
+                //if it's a mock receipt/no image specified set as appropriate resource file, otherwise set as uri
+                if(currentReceipt.receiptImage != 0) {
+                    iv_receipt_image.setImageResource(currentReceipt.receiptImage)
+                }
+                else {
+                    iv_receipt_image.setImageURI(currentReceipt.receiptImageURI.toUri())
+                }
 
             }
 
 
 
-
-
-
-
-
             // TODO: Rename and change types of parameters
-            private var param1: String? = null
-            private var param2: String? = null
+          //
             private var listener: OnDetailsFragmentListener? = null
 
             override fun onCreate(savedInstanceState: Bundle?) {
                 super.onCreate(savedInstanceState)
                 arguments?.let {
-                    param1 = it.getString(ARG_PARAM1)
-                    param2 = it.getString(ARG_PARAM2)
+                    detailsID = arguments?.getInt(EDIT_RECEIPT) ?: 0
                 }
             }
 
@@ -87,28 +83,48 @@
             }
 
             override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-                var id = 0 //  arguments?.getInt(ITEM_KEY) ?: 0
-                var newID =0
 
-                //todo:change to id once argument setters are in place
-                populate(4)
+                populate(detailsID)
+
               btn_previous.setOnClickListener {
-                  if (id>=1){
-                      
+                  if (detailsID>=1){
+                      detailsID--
                   }
-
+                  else {
+                      detailsID=receiptList.size-1
+                  }
+                  populate(detailsID)
               }
-
+                btn_next.setOnClickListener {
+                    if (detailsID < receiptList.size -1){
+                        detailsID++
+                    }
+                    else {
+                        detailsID=0
+                    }
+                    populate(detailsID)
+                }
 
                 btn_edit.setOnClickListener {
-                    println("hello hello, hello everyone, this is popular music")
+                    //s
+                    val fragment = EditFragment.newInstance(detailsID,null)
+                   // val bundle = Bundle()
+                    //bundle.putInt(EDIT_RECEIPT,id)
+                  //  fragment.setArguments(bundle)
+                    val transaction = fragmentManager!!.beginTransaction()
+                    transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
                 }
 
 
-                /*btn_edit
-        btn_return
-        btn_previous
-        btn_next*/
+
+                 btn_return.setOnClickListener {
+                     val intent = Intent(view.context, ListActivity::class.java)
+                     startActivity(intent)
+                 }
+
+
                 super.onViewCreated(view, savedInstanceState)
             }
 
@@ -132,39 +148,13 @@
             }
 
             companion object {
-                /**
-                 * Use this factory method to create a new instance of
-                 * this fragment using the provided parameters.
-                 *
-                 * @param param1 Parameter 1.
-                 * @param param2 Parameter 2.
-                 * @return A new instance of fragment BlankFragment.
-                 */
                 // TODO: Rename and change types and number of parameters
                 @JvmStatic
-                fun newInstance(param1: String, param2: String) =
+                fun newInstance(param1: Int) =
                     DetailsFragment().apply {
                         arguments = Bundle().apply {
-                            putString(ARG_PARAM1, param1)
-                            putString(ARG_PARAM2, param2)
+                            putInt(DETAILS_ID_PARAM, param1)
                         }
                     }
             }
         }
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BlankFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        //  @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
