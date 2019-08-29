@@ -14,7 +14,6 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
 
 
    companion object {
-       const val ID_TRANSFER = "1"
        const val ADD_NEW_RECEIPT = "2"
        const val EDIT_RECEIPT = "3"
        const val KEY_RECEIPT = 1
@@ -36,23 +35,8 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
         setContentView(R.layout.activity_details)
 
 
-/*
-    *
-    *   once we're stiching the two activities together, will have something like
-    * if intent getstring "details"
-    * replace main frame with details fragment with receiptList[getint]
-    * if (intent.getString "edit")
-    * replace main frame with  edit fragment with the id provided in getint
-    *  else if intent getstring "add"
-    * open edit fragment but  with blank entries
-    * else:
-    *  error message or similar
-    *
-    * */
         
             //////remove this asap
-        ReceiptsMockData.fillList()
-        println(ReceiptsMockData.receiptList)
             //////remove it!
 
         var new = intent.getIntExtra(ADD_NEW_RECEIPT, -1)

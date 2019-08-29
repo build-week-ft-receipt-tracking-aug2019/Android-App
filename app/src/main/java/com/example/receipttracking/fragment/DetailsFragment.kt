@@ -21,9 +21,7 @@
         import java.util.*
 
 
-        // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private const val DETAILS_ID_PARAM = "ID"
+
         private var detailsID = 0
 
 
@@ -81,7 +79,6 @@
                 return inflater.inflate(R.layout.details_fragment, container, false)
             }
 
-            // TODO: Rename method, update argument and hook method into UI event
             fun onButtonPressed(uri: Uri) {
                 listener?.onDetailsFragmentInteraction(uri)
             }

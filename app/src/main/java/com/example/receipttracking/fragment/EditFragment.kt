@@ -32,36 +32,21 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-
-
-
-
-
-
 class EditFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var editID: Int? = null ?: -1
     private var newID: Int? = null ?: -1
     private var listener: OnEditFragmentListener? = null
     private var uriS:String = ""
-    @SuppressLint("NewApi")
     var mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
-
-
-/*
-    val netDate = Date().getTime()
-    var unixTime = System.currentTimeMillis() / 1000L
-*/
-
     @SuppressLint("NewApi")
+
+
     fun populate(id:Int) {
         //get the receipt object at the list editID
-        var currentReceipt = ReceiptsMockData.receiptList[id] as Receipts
-
+        var currentReceipt = ReceiptsMockData.receiptList[id]
         ev_merchant_name.setText(currentReceipt.merchantName)
         ev_category.setText(currentReceipt.category)
-        //TODO:proper formatting for date and money, should be able to grab a freeware class for both thrings -- or may be handled inkotlin alreayd
-        // either way come back to this
         ev_date.setText(fromDateLong(currentReceipt.date)).toString()
         ev_amount.setText(mCurrencyFormat.format(currentReceipt.cost).toString())
         tv_mock_id.text =currentReceipt.mockID.toString()
@@ -78,8 +63,8 @@ class EditFragment : Fragment() {
 
  fun saveChanges(id:Int) {
 
-     var date= System.currentTimeMillis() / 1000L //toDateLong(ev_date.text.toString()) ?
-     var cost: Double = 55.00 //ev_amount.text.toString().toDouble()
+     var date= 1559594970L //System.currentTimeMillis() / 1000L  //toDateLong(ev_date.text.toString()) ?
+     var cost = 55.00 //ev_amount.text.toString().toDouble()
      var newReceipt = Receipts(
          "",
          ev_category.text.toString(),
@@ -89,15 +74,15 @@ class EditFragment : Fragment() {
          id,
          0,
          uriS)
-     if (NEW_ITEM_FLAG) {
+    /* if (NEW_ITEM_FLAG) {
          receiptList.add(newReceipt)
-         recycler_view.adapter!!.notifyDataSetChanged()
+       //  recycler_view.adapter!!.notifyDataSetChanged()
          NEW_ITEM_FLAG=false
      }
-     else{
+     else{*/
          receiptList[id]=newReceipt
-         recycler_view.adapter!!.notifyItemChanged(id)
-     }
+   //      recycler_view.adapter!!.notifyItemChanged(id)
+  //   }
  }
 
 
@@ -120,22 +105,19 @@ class EditFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        if (NEW_ITEM_FLAG) {
-            editID = receiptList.size-1
+            editID = receiptList.size
         }
         else {
             populate(editID as Int)
-            NEW_ITEM_FLAG=true
         }
 
         btn_submit.setOnClickListener {
             if (editID != -1) {
                 saveChanges(editID as Int)
-                val intent = Intent(view.context, ListActivity::class.java)
-                startActivity(intent)
+             /*   val intent = Intent(view.context, ListActivity::class.java)
+                startActivity(intent)*/
             }
         }
-
-
         btn_edit_image.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
                 addCategory(Intent.CATEGORY_OPENABLE)
@@ -144,37 +126,6 @@ class EditFragment : Fragment() {
             // alt code Intent.ACTION_OPEN_DOCUMENT
             startActivityForResult(intent, KEY_RECEIPT)
         }
-
-
-
-
-
-        /*
-                *   Code for previous and next buttons,
-                *   cut as of 9:43am on the 28th,
-                *   can we add relatively trivially
-        btn_previous_edit.setOnClickListener {
-            if (editID>=1){
-                editID--
-            }
-            else {
-                editID=receiptList.size-1
-            }
-            populate(editID)
-        }
-        btn_next_edit.setOnClickListener {
-            if (editID < receiptList.size -1){
-                editID++
-            }
-            else {
-                editID=0
-            }
-            populate(editID)
-        }
-*/
-
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {

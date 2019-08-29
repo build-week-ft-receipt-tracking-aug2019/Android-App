@@ -10,12 +10,31 @@ import android.content.Intent
 import android.view.View.VISIBLE
 import android.view.WindowManager
 import com.example.receipttracking.R
+import com.example.receipttracking.model.ReceiptsMockData.Companion.fillList
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
+        /*
+        *
+        *
+        *
+        * create mock data:
+        *
+        *
+        *
+        * */
+
+        fillList()
+
+
+
+
 
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

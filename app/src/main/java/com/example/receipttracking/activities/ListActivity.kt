@@ -26,11 +26,8 @@ class ListActivity : AppCompatActivity() {
 
 
 
-        fillList()
-        println(receiptList)
+
         recycler_view.apply {
-
-
             layoutManager = LinearLayoutManager(this@ListActivity, RecyclerView.VERTICAL, false)
             adapter = Adapter(receiptList)
         }
@@ -42,8 +39,6 @@ class ListActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
-
-
 
 
 
