@@ -27,7 +27,7 @@ private var detailsID = 0
 class DetailsFragment : Fragment() {
     private var listener: OnDetailsFragmentListener? = null
 
-    /*
+    /*a
     *  functions:
     * populate(id)
     * populates the fields based on the id provided
