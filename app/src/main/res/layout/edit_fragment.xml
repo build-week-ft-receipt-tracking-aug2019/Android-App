@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.receipttracking.fragment.DetailsFragment"
-    android:padding="5dp"
+    android:padding="4dp"
     android:layout_margin="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,8 @@
 
         <EditText
             android:id="@+id/ev_merchant_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
             android:layout_height="60dp"
             android:hint="Merchant Name"
             android:textSize="18dp"
@@ -26,7 +27,8 @@
 
         <EditText
             android:id="@+id/ev_category"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:hint="Category"
             android:textSize="18dp"
@@ -37,7 +39,8 @@
 
         <EditText
             android:id="@+id/ev_date"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:hint="Date"
             android:textSize="18dp"
@@ -49,7 +52,8 @@
 
         <EditText
             android:id="@+id/ev_amount"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:hint="Amount"
             android:textSize="18dp"
@@ -62,46 +66,58 @@
         <TextView
             android:id="@+id/tv_mock_id"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:text="MockID"
+            android:layout_height="wrap_content"
+            android:hint="MockID"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/iv_receipt_image"
+            app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl"
-            app:layout_constraintLeft_toLeftOf="@id/cl" />
+            app:layout_constraintTop_toBottomOf="@+id/ev_amount" />
 
         <ImageView
             android:id="@+id/iv_receipt_image"
-            android:layout_width="220dp"
-            android:layout_height="370dp"
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginTop="5sp"
+            android:background="@color/colorAccent"
+            android:padding="10sp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_background"
             android:text="Receipt Image"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_mock_id"
             app:layout_constraintBottom_toTopOf="@id/btn_edit_image"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl"
-            />
 
+
+            />
 
         <Button
             android:id="@+id/btn_edit_image"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
             android:text="Edit/Add Receipt Image"
             android:textSize="14dp"
+            android:layout_marginTop="4sp"
+            android:background="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@id/btn_submit"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl" />
 
         <Button
             android:id="@+id/btn_submit"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
             android:text="Confirm Changes"
             android:textSize="14dp"
-            app:layout_constraintBottom_toBottomOf="@id/cl"
+            android:background="@color/colorAccent"
+            android:layout_margin="4sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl" />
 

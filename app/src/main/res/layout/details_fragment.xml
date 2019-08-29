@@ -152,7 +152,6 @@
             android:layout_marginRight="5sp"
             android:text="Next"
             android:textSize="14sp"
-
             android:layout_marginBottom="4sp"
             android:background="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="@id/cl"
