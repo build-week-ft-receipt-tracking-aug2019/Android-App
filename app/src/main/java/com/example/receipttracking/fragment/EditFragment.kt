@@ -75,11 +75,10 @@ class EditFragment : Fragment() {
          0,
          uriS)
       if (NEW_ITEM_FLAG) {
-          ReceiptsMockData.receiptList
+          editID= receiptList.size
      receiptList.add(newReceipt)
-          ReceiptsMockData.receiptList
      NEW_ITEM_FLAG = false
- }
+        }
         else {
 
           var newReceipt = Receipts(
@@ -120,10 +119,17 @@ class EditFragment : Fragment() {
         }
 
         btn_submit.setOnClickListener {
-
                 saveChanges(editID as Int)
-               val intent = Intent(view.context, ListActivity::class.java)
-            startActivity(intent)
+
+            val fragment = DetailsFragment.newInstance(editID as Int)
+            // val bundle = Bundle()
+            //bundle.putInt(EDIT_RECEIPT,id)
+            //  fragment.setArguments(bundle)
+            val transaction = fragmentManager!!.beginTransaction()
+            transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+
         //    fragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         btn_edit_image.setOnClickListener {
