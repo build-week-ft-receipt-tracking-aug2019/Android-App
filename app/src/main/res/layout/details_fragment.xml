@@ -117,11 +117,10 @@
         <Button
             android:id="@+id/btn_previous"
             android:layout_width="0dp"
-            android:layout_height="45dp"
+            android:layout_height="45sp"
             android:text="@string/previous"
             android:textSize="14sp"
             android:background="@layout/my_edit_text_border"
-            android:layout_marginBottom="4sp"
             app:layout_constraintBottom_toBottomOf="@id/cl"
             app:layout_constraintEnd_toStartOf="@+id/btn_return"
             app:layout_constraintStart_toStartOf="parent" />
@@ -129,11 +128,10 @@
         <Button
             android:id="@+id/btn_return"
             android:layout_width="0dp"
-            android:layout_height="45dp"
+            android:layout_height="45sp"
             android:text="@string/list_view"
             android:textSize="14sp"
             android:background="@layout/my_edit_text_border"
-            android:layout_marginBottom="4sp"
             android:layout_marginLeft="4sp"
             android:layout_marginRight="4sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -147,7 +145,6 @@
             android:layout_height="45sp"
             android:text="@string/next"
             android:textSize="14sp"
-            android:layout_marginBottom="4sp"
             android:background="@layout/my_edit_text_border"
             app:layout_constraintBottom_toBottomOf="@id/cl"
             app:layout_constraintEnd_toEndOf="parent"
