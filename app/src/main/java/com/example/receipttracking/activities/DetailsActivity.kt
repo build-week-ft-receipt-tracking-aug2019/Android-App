@@ -11,11 +11,11 @@ import com.example.receipttracking.model.ReceiptsMockData
 
 class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentListener, EditFragment.OnEditFragmentListener {
 
-    companion object {
-        const val ID_TRANSFER = "1"
-        const val ADD_NEW_RECEIPT = "2"
-        const val EDIT_RECEIPT = "3"
-        const val KEY_RECEIPT = "RECEIPT"
+   companion object {
+       const val ID_TRANSFER = "1"
+       const val ADD_NEW_RECEIPT = "2"
+       const val EDIT_RECEIPT = "3"
+       const val KEY_RECEIPT = 1
 
 
     }
@@ -45,15 +45,21 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
     *  error message or similar
     *
     * */
-
-
+        
             //////remove this asap
         ReceiptsMockData.fillList()
         println(ReceiptsMockData.receiptList)
             //////remove it!
+        var fragment = EditFragment.newInstance(-1,1)
+        var new = intent.getIntExtra(ADD_NEW_RECEIPT, -1)
+        var edit = intent.getIntExtra(EDIT_RECEIPT,-1)
+        if (edit != -1){
+                DetailsFragment.newInstance(edit)
+        }
+        else {
+            EditFragment.newInstance(-1,1)
+        }
 
-        val fragment =
-            DetailsFragment()
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_holder, fragment)
             .commit()
