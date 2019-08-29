@@ -23,7 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_login)
 
-        object : CountDownTimer(2000, 1000){
+        object : CountDownTimer(1000, 1000){
             override fun onFinish() {
                 progress_bar_loading.visibility = View.GONE
                 imageView_receipt_icon.setImageResource(R.drawable.receipt_tracker_logo)

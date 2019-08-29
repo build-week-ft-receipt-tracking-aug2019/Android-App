@@ -9,124 +9,155 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/black">
 
         <TextView
             android:id="@+id/tv_merchant_name"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:text="Merchant Name"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
             android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/cl" />
 
         <TextView
             android:id="@+id/tv_category"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="category"
-            android:textSize="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/ev_date"
-
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_merchant_name" />
 
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="date"
-            android:textSize="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_category" />
 
 
         <TextView
+
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:text="Amount"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
             android:textSize="30dp"
             android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/tv_date"
-        app:layout_constraintLeft_toLeftOf="@id/cl"
-            app:layout_constraintRight_toRightOf="@id/cl"/>
+            app:layout_constraintLeft_toLeftOf="@id/cl"
+            app:layout_constraintRight_toRightOf="@id/cl"
+            app:layout_constraintTop_toBottomOf="@id/tv_date" />
 
 
         <TextView
             android:id="@+id/tv_mock_id"
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:text="MockID"
-            android:textSize="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/iv_receipt_image"
+            app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl"
-          app:layout_constraintLeft_toLeftOf="@id/cl" />
+            app:layout_constraintTop_toBottomOf="@id/tv_amount" />
 
         <ImageView
             android:id="@+id/iv_receipt_image"
-            android:layout_width="250dp"
-            android:layout_height="420dp"
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginTop="5sp"
+            android:background="@color/colorAccent"
+            android:padding="10sp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_background"
             android:text="Receipt Image"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/btn_edit"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl"
-         />
+            app:layout_constraintTop_toBottomOf="@+id/tv_mock_id" />
 
 
         <Button
             android:id="@+id/btn_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
             android:text="Edit Receipt"
-            android:textSize="14dp"
-            app:layout_constraintBottom_toTopOf="@id/btn_return"
+            android:textSize="14sp"
+            android:layout_marginRight="5sp"
+            android:layout_marginLeft="5sp"
+            android:background="@color/colorAccent"
+            android:layout_margin="4sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_return"
             app:layout_constraintLeft_toLeftOf="@id/cl"
-            app:layout_constraintRight_toRightOf="@id/cl" />
-
-        <Button
-            android:id="@+id/btn_return"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="return to list"
-            android:textSize="14dp"
-            app:layout_constraintBottom_toBottomOf="@id/cl"
-            app:layout_constraintLeft_toLeftOf="@id/cl"
-            app:layout_constraintRight_toRightOf="@id/cl" />
+            app:layout_constraintRight_toRightOf="@id/cl"
+            app:layout_constraintTop_toBottomOf="@+id/iv_receipt_image" />
 
         <!--replace these next two with custom animatables-->
         <Button
             android:id="@+id/btn_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="Previous Receipt"
-            android:textSize="10dp"
-            app:layout_constraintLeft_toLeftOf="@id/cl"
-      app:layout_constraintBottom_toBottomOf="@id/cl" />
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="5sp"
+            android:text="Previous"
+            android:textSize="14sp"
+            android:background="@color/colorAccent"
+            android:layout_marginBottom="4sp"
+            app:layout_constraintBottom_toBottomOf="@id/cl"
+            app:layout_constraintEnd_toStartOf="@+id/btn_return"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_return"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:text="List View"
+            android:textSize="14sp"
+            android:background="@color/colorAccent"
+            android:layout_marginBottom="4sp"
+            android:layout_marginLeft="4sp"
+            android:layout_marginRight="4sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_next"
+            app:layout_constraintStart_toEndOf="@+id/btn_previous"
+            app:layout_constraintTop_toBottomOf="@+id/btn_edit" />
 
         <Button
             android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="Next Receipt"
-            android:textSize="10dp"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="5sp"
+            android:text="Next"
+            android:textSize="14sp"
+
+            android:layout_marginBottom="4sp"
+            android:background="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="@id/cl"
-            app:layout_constraintRight_toRightOf="@id/cl"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_return" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
