@@ -1,11 +1,8 @@
 package com.example.receipttracking.fragment
 
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.ListActivity
 import android.content.Context
 import android.content.Intent
-import android.icu.text.NumberFormat
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -18,13 +15,9 @@ import com.example.receipttracking.R
 import com.example.receipttracking.activities.DetailsActivity.Companion.ADD_NEW_RECEIPT
 import com.example.receipttracking.activities.DetailsActivity.Companion.EDIT_RECEIPT
 import com.example.receipttracking.activities.DetailsActivity.Companion.KEY_RECEIPT
-import com.example.receipttracking.activities.DetailsActivity.Companion.NEW_ITEM_FLAG
 import com.example.receipttracking.model.Receipts
 import com.example.receipttracking.model.ReceiptsMockData
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
-import com.example.receipttracking.model.utils.Companion.fromDateLong
-import com.example.receipttracking.model.utils.Companion.toDateLong
-import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.details_fragment.iv_receipt_image
 import kotlinx.android.synthetic.main.details_fragment.tv_mock_id
 import kotlinx.android.synthetic.main.edit_fragment.*
@@ -32,24 +25,56 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
+
+
+
+
+
+
 class EditFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var editID: Int? = null ?: -1
     private var newID: Int? = null ?: -1
+    private var NEW_ITEM_FLAG = false
     private var listener: OnEditFragmentListener? = null
     private var uriS:String = ""
-    var mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
-    @SuppressLint("NewApi")
+    fun fromDateLong(timeStampStr:Long):String{
+        try {
+            val sdf = SimpleDateFormat("MM/dd/yyyy")
+            val netDate = Date(timeStampStr * 1000)
 
+            return sdf.format(netDate)
+        } catch (ex: Exception) {
+            return timeStampStr.toString()
+        }
+    }
+fun toDateLong(input:String) {
+    val sdf = SimpleDateFormat("MM/dd/yyyy")
+    var epoch =
+        java.text.SimpleDateFormat("MM/dd/yyyy").parse(sdf.format(input))!!.time / 1000
+    println(epoch)
+}
+
+
+/*
+    val sdf = SimpleDateFormat("MM/dd/yyyy", "US")
+
+    val netDate = Date().getTime()
+    var unixTime = System.currentTimeMillis() / 1000L
+*/
 
     fun populate(id:Int) {
         //get the receipt object at the list editID
-        var currentReceipt = ReceiptsMockData.receiptList[id]
+        var currentReceipt = ReceiptsMockData.receiptList[id] as Receipts
+
         ev_merchant_name.setText(currentReceipt.merchantName)
         ev_category.setText(currentReceipt.category)
+        //TODO:proper formatting for date and money, should be able to grab a freeware class for both thrings -- or may be handled inkotlin alreayd
+        // either way come back to this
         ev_date.setText(fromDateLong(currentReceipt.date)).toString()
-        ev_amount.setText(mCurrencyFormat.format(currentReceipt.cost).toString())
+        ev_amount.setText(currentReceipt.cost.toString())
         tv_mock_id.text =currentReceipt.mockID.toString()
+        //TODO: return here once we get images for rceipts
 
         //if it's a mock receipt/no image specified set as appropriate resource file, otherwise set as uri
         if(currentReceipt.receiptImage != 0) {
@@ -62,11 +87,20 @@ class EditFragment : Fragment() {
 
 
  fun saveChanges(id:Int) {
-
-     var date = System.currentTimeMillis() / 1000L  //toDateLong(ev_date.text.toString()) ?
-     var cost = 55.00 //ev_amount.text.toString().toDouble()
+     //this may eventually have data sanity checks and perhaps a dialog box to communicate with user
+     /*
+        var fullName:String,
+        var category:String,
+        var merchantName:String,
+        var cost:Double,
+        var date: Long,
+        var mockID:Int,
+        var receiptImage:Int*/
+     //update once we have formating
+     var date: Long = 165655644 //ev_date,
+     var cost: Double = 45.12 // ev_amount
      var newReceipt = Receipts(
-         " ",
+         "",
          ev_category.text.toString(),
          ev_merchant_name.text.toString(),
          cost,
@@ -74,26 +108,10 @@ class EditFragment : Fragment() {
          id,
          0,
          uriS)
-      if (NEW_ITEM_FLAG) {
-          editID= receiptList.size
-     receiptList.add(newReceipt)
-     NEW_ITEM_FLAG = false
-        }
-        else {
-
-          var newReceipt = Receipts(
-              "",
-              ev_category.text.toString(),
-              ev_merchant_name.text.toString(),
-              cost,
-              date,
-              receiptList[id].mockID,
-              receiptList[id].receiptImage,
-              "")
-        receiptList[id]=newReceipt
-
-         }
+     receiptList.add(id,newReceipt)
  }
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,24 +132,27 @@ class EditFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-       if (NEW_ITEM_FLAG==false) {
+
+
+        if (editID != -1) { // else if and else are likely redundant
             populate(editID as Int)
+            NEW_ITEM_FLAG=false
+        }
+        else {  //this should never trigger
+            newID = receiptList.size
+            NEW_ITEM_FLAG=true
         }
 
         btn_submit.setOnClickListener {
+            if (editID != -1) {
                 saveChanges(editID as Int)
-
-            val fragment = DetailsFragment.newInstance(editID as Int)
-            // val bundle = Bundle()
-            //bundle.putInt(EDIT_RECEIPT,id)
-            //  fragment.setArguments(bundle)
-            val transaction = fragmentManager!!.beginTransaction()
-            transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-
-        //    fragmentManager?.beginTransaction()?.remove(this)?.commit()
+            }
+            else {
+                saveChanges(newID as Int)
+            }
         }
+
+
         btn_edit_image.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
                 addCategory(Intent.CATEGORY_OPENABLE)
@@ -140,6 +161,37 @@ class EditFragment : Fragment() {
             // alt code Intent.ACTION_OPEN_DOCUMENT
             startActivityForResult(intent, KEY_RECEIPT)
         }
+
+
+
+
+
+        /*
+                *   Code for previous and next buttons,
+                *   cut as of 9:43am on the 28th,
+                *   can we add relatively trivially
+        btn_previous_edit.setOnClickListener {
+            if (editID>=1){
+                editID--
+            }
+            else {
+                editID=receiptList.size-1
+            }
+            populate(editID)
+        }
+        btn_next_edit.setOnClickListener {
+            if (editID < receiptList.size -1){
+                editID++
+            }
+            else {
+                editID=0
+            }
+            populate(editID)
+        }
+*/
+
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
@@ -158,7 +210,7 @@ class EditFragment : Fragment() {
         }
     }
 
-
+        // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {
         listener?.onEditFragmentInteraction(uri)
     }
@@ -177,11 +229,24 @@ class EditFragment : Fragment() {
         listener = null
     }
 
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     *
+     *
+     * See the Android Training lesson [Communicating with Other Fragments]
+     * (http://developer.android.com/training/basics/fragments/communicating.html)
+     * for more information.
+     */
     interface OnEditFragmentListener {
+        // TODO: Update argument type and name
         fun onEditFragmentInteraction(uri: Uri)
     }
 
     companion object {
+        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(editId: Int, new: Int?) =
             EditFragment().apply {

@@ -3,9 +3,7 @@
 
         import android.content.Context
         import android.content.Intent
-        import android.icu.text.NumberFormat
         import android.net.Uri
-        import android.os.Build
         import android.os.Bundle
         import androidx.fragment.app.Fragment
         import android.view.LayoutInflater
@@ -17,17 +15,16 @@
         import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
         import kotlinx.android.synthetic.main.details_fragment.*
         import com.example.receipttracking.activities.ListActivity
-        import com.example.receipttracking.model.ReceiptsMockData
-        import com.example.receipttracking.model.utils.Companion.fromDateLong
-        import java.util.*
 
 
 
+        // TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+        private const val DETAILS_ID_PARAM = "ID"
         private var detailsID = 0
 
 
         class DetailsFragment : Fragment() {
-            var mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
 
             /*
             *  functions:
@@ -45,8 +42,8 @@
                 tv_category.text = currentReceipt.category
                 //TODO:proper formatting for date and money, should be able to grab a freeware class for both thrings -- or may be handled inkotlin alreayd
                 // either way come back to this
-                tv_date.text = fromDateLong(currentReceipt.date)
-                tv_amount.text = mCurrencyFormat.format(currentReceipt.cost).toString()
+                tv_date.text = currentReceipt.date.toString()
+                tv_amount.text = currentReceipt.cost.toString()
                 tv_mock_id.text =currentReceipt.mockID.toString()
 
                 //if it's a mock receipt/no image specified set as appropriate resource file, otherwise set as uri
@@ -80,6 +77,7 @@
                 return inflater.inflate(R.layout.details_fragment, container, false)
             }
 
+            // TODO: Rename method, update argument and hook method into UI event
             fun onButtonPressed(uri: Uri) {
                 listener?.onDetailsFragmentInteraction(uri)
             }
@@ -108,6 +106,7 @@
                 }
 
                 btn_edit.setOnClickListener {
+                    //s
                     val fragment = EditFragment.newInstance(detailsID,null)
                    // val bundle = Bundle()
                     //bundle.putInt(EDIT_RECEIPT,id)
