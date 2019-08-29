@@ -153,7 +153,7 @@
                 fun newInstance(param1: Int) =
                     DetailsFragment().apply {
                         arguments = Bundle().apply {
-                            putInt(DETAILS_ID_PARAM, param1)
+                            putInt(EDIT_RECEIPT, param1)
                         }
                     }
             }

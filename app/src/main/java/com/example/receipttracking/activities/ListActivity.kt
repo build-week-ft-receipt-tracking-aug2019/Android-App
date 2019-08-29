@@ -11,6 +11,7 @@ import com.example.receipttracking.activities.DetailsActivity.Companion.ADD_NEW_
 import com.example.receipttracking.model.ReceiptsMockData.Companion.fillList
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
 import com.example.receipttracking.recyclerview.Adapter
+import kotlinx.android.synthetic.main.activity_items_list.*
 import kotlinx.android.synthetic.main.activity_list.*
 
 
@@ -36,6 +37,21 @@ class ListActivity : AppCompatActivity() {
            intent.putExtra(ADD_NEW_RECEIPT,1)
 
 
+        }
+
+
+
+
+
+
+
+
+
+
+        button_add_new.setOnClickListener {
+            val intent = Intent(this, DetailsActivity::class.java)
+           intent.putExtra(ADD_NEW_RECEIPT,1)
+            startActivity(intent)
         }
 
 
