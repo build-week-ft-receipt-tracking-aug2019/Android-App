@@ -37,63 +37,72 @@ class EditFragment : Fragment() {
     private var editID: Int? = null ?: -1
     private var newID: Int? = null ?: -1
     private var listener: OnEditFragmentListener? = null
-    private var uriS:String = ""
+    private var uriS: String = ""
     var mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
     @SuppressLint("NewApi")
 
+            /*
+            *  functions:
+            * populate(id)
+            * populates the fields based on the id provided
+            * exists as an object itself in order to allow previous/next functionality
+            *
+            *
+            *
+            * */
 
-    fun populate(id:Int) {
+    fun populate(id: Int) {
         //get the receipt object at the list editID
         var currentReceipt = ReceiptsMockData.receiptList[id]
         ev_merchant_name.setText(currentReceipt.merchantName)
         ev_category.setText(currentReceipt.category)
         ev_date.setText(fromDateLong(currentReceipt.date)).toString()
         ev_amount.setText(mCurrencyFormat.format(currentReceipt.cost).toString())
-        tv_mock_id.text =currentReceipt.mockID.toString()
+        tv_mock_id.text = currentReceipt.mockID.toString()
 
         //if it's a mock receipt/no image specified set as appropriate resource file, otherwise set as uri
-        if(currentReceipt.receiptImage != 0) {
+        if (currentReceipt.receiptImage != 0) {
             iv_receipt_image.setImageResource(currentReceipt.receiptImage)
-        }
-        else {
+        } else {
             iv_receipt_image.setImageURI(currentReceipt.receiptImageURI.toUri())
         }
     }
 
 
- fun saveChanges(id:Int) {
+    fun saveChanges(id: Int) {
 
-     var date = System.currentTimeMillis() / 1000L  //toDateLong(ev_date.text.toString()) ?
-     var cost = 55.00 //ev_amount.text.toString().toDouble()
-     var newReceipt = Receipts(
-         " ",
-         ev_category.text.toString(),
-         ev_merchant_name.text.toString(),
-         cost,
-         date,
-         id,
-         0,
-         uriS)
-      if (NEW_ITEM_FLAG) {
-          editID= receiptList.size
-     receiptList.add(newReceipt)
-     NEW_ITEM_FLAG = false
+        var date = System.currentTimeMillis() / 1000L  //toDateLong(ev_date.text.toString()) ?
+        var cost = 55.00 //ev_amount.text.toString().toDouble()
+        var newReceipt = Receipts(
+            " ",
+            ev_category.text.toString(),
+            ev_merchant_name.text.toString(),
+            cost,
+            date,
+            id,
+            0,
+            uriS
+        )
+        if (NEW_ITEM_FLAG) {
+            editID = receiptList.size
+            receiptList.add(newReceipt)
+            NEW_ITEM_FLAG = false
+        } else {
+
+            var newReceipt = Receipts(
+                "",
+                ev_category.text.toString(),
+                ev_merchant_name.text.toString(),
+                cost,
+                date,
+                receiptList[id].mockID,
+                receiptList[id].receiptImage,
+                ""
+            )
+            receiptList[id] = newReceipt
+
         }
-        else {
-
-          var newReceipt = Receipts(
-              "",
-              ev_category.text.toString(),
-              ev_merchant_name.text.toString(),
-              cost,
-              date,
-              receiptList[id].mockID,
-              receiptList[id].receiptImage,
-              "")
-        receiptList[id]=newReceipt
-
-         }
- }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,12 +123,12 @@ class EditFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-       if (NEW_ITEM_FLAG==false) {
+        if (NEW_ITEM_FLAG == false) {
             populate(editID as Int)
         }
 
         btn_submit.setOnClickListener {
-                saveChanges(editID as Int)
+            saveChanges(editID as Int)
 
             val fragment = DetailsFragment.newInstance(editID as Int)
             // val bundle = Bundle()
@@ -130,7 +139,7 @@ class EditFragment : Fragment() {
             transaction.addToBackStack(null)
             transaction.commit()
 
-        //    fragmentManager?.beginTransaction()?.remove(this)?.commit()
+            //    fragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         btn_edit_image.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
@@ -153,7 +162,7 @@ class EditFragment : Fragment() {
                 Log.i("2legs", "Uri: $uri")
                 iv_receipt_image.setImageURI(uri)
                 uriS = uri.toString()
-               // showImage(uri)
+                // showImage(uri)
             }
         }
     }
@@ -187,9 +196,9 @@ class EditFragment : Fragment() {
             EditFragment().apply {
                 arguments = Bundle().apply {
                     putInt(EDIT_RECEIPT, editId)
-                   if(new!=null) {
-                       putInt(ADD_NEW_RECEIPT, new)
-                   }
+                    if (new != null) {
+                        putInt(ADD_NEW_RECEIPT, new)
+                    }
                 }
             }
     }
