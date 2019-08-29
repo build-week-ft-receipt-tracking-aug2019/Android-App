@@ -18,6 +18,7 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
        const val ADD_NEW_RECEIPT = "2"
        const val EDIT_RECEIPT = "3"
        const val KEY_RECEIPT = 1
+       var NEW_ITEM_FLAG = false
 
 
 
