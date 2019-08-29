@@ -5,7 +5,7 @@
 
 
     <ImageView
-        android:src="@drawable/receipt_tracker_logo"
+        android:src="@drawable/ic_check_box_outline_blank_black_24dp"
         android:id="@+id/imageView_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

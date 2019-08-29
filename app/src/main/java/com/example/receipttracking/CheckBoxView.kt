@@ -2,38 +2,29 @@ package com.example.receipttracking
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.checkbox_view.view.*
+import java.util.jar.Attributes
 
-class CheckBoxView (context: Context, attrs: AttributeSet): LinearLayout(context, attrs){
+class CheckBoxView(context: Context, attributeSet: AttributeSet): LinearLayout(context, attributeSet){
+
 
     companion object{
         var isChecked = false
-    }
 
-    private var cardID: Int = 0
-
-    fun setChecked(checked: Boolean){
-
-        isChecked = checked
-        setInitial(isChecked)
 
     }
 
-    init {
-        View.inflate(context, R.layout.checkbox_view, this)
-        var myImage = findViewById(R.id.customView_checkbox)
-    }
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        isChecked = true
 
-
-
-    fun setInitial(pos: Boolean){
         val checked = ContextCompat.getDrawable(context, R.drawable.ic_check_box_black_24dp)
         val notChecked = ContextCompat.getDrawable(context, R.drawable.ic_check_box_outline_blank_black_24dp)
 
-        when(pos){
+        when(isChecked){
 
             true -> imageView_check.setImageDrawable(checked)
             false -> imageView_check.setImageDrawable(notChecked)
@@ -41,8 +32,11 @@ class CheckBoxView (context: Context, attrs: AttributeSet): LinearLayout(context
 
         }
 
-
-
+        return false
     }
 
+
+
 }
+
+

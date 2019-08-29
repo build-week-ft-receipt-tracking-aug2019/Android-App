@@ -10,4 +10,24 @@
     <string name="login">Login</string>
     <string name="skip">Skip</string>
     <string name="receipt_keeps">Receipt Keeps</string>
+    <string name="edit_add_receipt_image">Edit/Add Receipt Image</string>
+    <string name="confirm_changes">Confirm Changes</string>
+    <string name="receipt_image">Receipt Image</string>
+    <string name="mockid">MockID</string>
+    <string name="amount">Amount</string>
+    <string name="date">Date</string>
+    <string name="category">Category</string>
+    <string name="merchant_name">Merchant Name</string>
+    <string name="past_receipts">Past Receipts</string>
+    <string name="email">email</string>
+    <string name="next">Next</string>
+    <string name="merchant_name">Merchant Name</string>
+    <string name="category">Category</string>
+    <string name="date">Date</string>
+    <string name="amount">Amount</string>
+    <string name="mockid">MockID</string>
+    <string name="receipt_image">Receipt Image</string>
+    <string name="edit_receipt">Edit Receipt</string>
+    <string name="previous">Previous</string>
+    <string name="list_view">List View</string>
 </resources>

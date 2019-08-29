@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.receipttracking.CheckBoxView
 import com.example.receipttracking.R
 import kotlinx.android.synthetic.main.activity_items_list.view.*
 import com.example.receipttracking.activities.DetailsActivity
@@ -29,6 +30,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
         val textViewName: TextView = view.tv_name
         val textViewAmount: TextView = view.tv_amount
         val textViewDate: TextView = view.tv_date
+        val customView = view.customView_checkbox
 
 
         fun bindModel(receipt: Receipts) {
@@ -54,7 +56,13 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
 
     override fun onBindViewHolder(ViewHolder: ViewHolder, position: Int) {
         val receipt = receiptList[position]
+       // ViewHolder.customView.setIDRef(position)
         ViewHolder.bindModel(receipt)
+
+
+        ViewHolder.customView.setOnClickListener {
+            CheckBoxView.isChecked = true
+        }
 
        ViewHolder.card.setOnClickListener { view ->
 
