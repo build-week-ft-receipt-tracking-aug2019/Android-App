@@ -14,7 +14,7 @@ import androidx.core.net.toUri
 import com.example.receipttracking.R
 import com.example.receipttracking.activities.DetailsActivity.Companion.ADD_NEW_RECEIPT
 import com.example.receipttracking.activities.DetailsActivity.Companion.EDIT_RECEIPT
-import com.example.receipttracking.activities.DetailsActivity.Companion.READ_REQUEST_CODE
+import com.example.receipttracking.activities.DetailsActivity.Companion.KEY_RECEIPT
 import com.example.receipttracking.model.Receipts
 import com.example.receipttracking.model.ReceiptsMockData
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
@@ -33,7 +33,7 @@ import java.util.*
 
 class EditFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var id: Int? = null ?: -1
+    private var editID: Int? = null ?: -1
     private var newID: Int? = null ?: -1
     private var NEW_ITEM_FLAG = false
     private var listener: OnEditFragmentListener? = null
@@ -64,7 +64,7 @@ fun toDateLong(input:String) {
 */
 
     fun populate(id:Int) {
-        //get the receipt object at the list id
+        //get the receipt object at the list editID
         var currentReceipt = ReceiptsMockData.receiptList[id] as Receipts
 
         ev_merchant_name.setText(currentReceipt.merchantName)
@@ -117,10 +117,10 @@ fun toDateLong(input:String) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            id = it.getInt(EDIT_RECEIPT) ?: -1
+            editID = it.getInt(EDIT_RECEIPT) ?: -1
             newID = it.getInt(ADD_NEW_RECEIPT) ?: -1
         }
-        Log.i("id= $id  ", "newID= $newID")
+        Log.i("editID= $editID  ", "newID= $newID")
     }
 
     override fun onCreateView(
@@ -134,8 +134,8 @@ fun toDateLong(input:String) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
-        if (id != -1) { // else if and else are likely redundant
-            populate(id as Int)
+        if (editID != -1) { // else if and else are likely redundant
+            populate(editID as Int)
             NEW_ITEM_FLAG=false
         }
         else {  //this should never trigger
@@ -144,8 +144,8 @@ fun toDateLong(input:String) {
         }
 
         btn_submit.setOnClickListener {
-            if (id != -1) {
-                saveChanges(id as Int)
+            if (editID != -1) {
+                saveChanges(editID as Int)
             }
             else {
                 saveChanges(newID as Int)
@@ -158,8 +158,8 @@ fun toDateLong(input:String) {
                 addCategory(Intent.CATEGORY_OPENABLE)
                 type = "image/*"
             }
-            // all code Intent.ACTION_OPEN_DOCUMENT
-            startActivityForResult(intent, READ_REQUEST_CODE)
+            // alt code Intent.ACTION_OPEN_DOCUMENT
+            startActivityForResult(intent, KEY_RECEIPT)
         }
 
 
@@ -171,22 +171,22 @@ fun toDateLong(input:String) {
                 *   cut as of 9:43am on the 28th,
                 *   can we add relatively trivially
         btn_previous_edit.setOnClickListener {
-            if (id>=1){
-                id--
+            if (editID>=1){
+                editID--
             }
             else {
-                id=receiptList.size-1
+                editID=receiptList.size-1
             }
-            populate(id)
+            populate(editID)
         }
         btn_next_edit.setOnClickListener {
-            if (id < receiptList.size -1){
-                id++
+            if (editID < receiptList.size -1){
+                editID++
             }
             else {
-                id=0
+                editID=0
             }
-            populate(id)
+            populate(editID)
         }
 */
 
@@ -200,7 +200,7 @@ fun toDateLong(input:String) {
         // READ_REQUEST_CODE. If the request code seen here doesn't match, it's the
         // response to some other intent, and the code below shouldn't run at all.
 
-        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+        if (requestCode == KEY_RECEIPT && resultCode == Activity.RESULT_OK) {
             resultData?.data?.also { uri ->
                 Log.i("2legs", "Uri: $uri")
                 iv_receipt_image.setImageURI(uri)

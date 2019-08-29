@@ -20,12 +20,12 @@
 
         // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-        private const val ARG_PARAM1 = "param1"
-        private const val ARG_PARAM2 = "param2"
-
+        private const val DETAILS_ID_PARAM = "ID"
+        private var detailsID = 0
 
 
         class DetailsFragment : Fragment() {
+
             /*
             *  functions:
             * populate(id)
@@ -59,15 +59,13 @@
 
 
             // TODO: Rename and change types of parameters
-            private var param1: String? = null
-            private var param2: String? = null
+          //
             private var listener: OnDetailsFragmentListener? = null
 
             override fun onCreate(savedInstanceState: Bundle?) {
                 super.onCreate(savedInstanceState)
                 arguments?.let {
-                    param1 = it.getString(ARG_PARAM1)
-                    param2 = it.getString(ARG_PARAM2)
+                    detailsID = arguments?.getInt(EDIT_RECEIPT) ?: 0
                 }
             }
 
@@ -85,34 +83,31 @@
             }
 
             override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-                var id = 0 //  arguments?.getInt(ITEM_KEY) ?: 0
-                var newID =0
 
-                //todo:change to id once argument setters are in place
-                populate(18)
+                populate(detailsID)
 
               btn_previous.setOnClickListener {
-                  if (id>=1){
-                      id--
+                  if (detailsID>=1){
+                      detailsID--
                   }
                   else {
-                      id=receiptList.size-1
+                      detailsID=receiptList.size-1
                   }
-                  populate(id)
+                  populate(detailsID)
               }
                 btn_next.setOnClickListener {
-                    if (id < receiptList.size -1){
-                        id++
+                    if (detailsID < receiptList.size -1){
+                        detailsID++
                     }
                     else {
-                        id=0
+                        detailsID=0
                     }
-                    populate(id)
+                    populate(detailsID)
                 }
 
                 btn_edit.setOnClickListener {
                     //s
-                    val fragment = EditFragment.newInstance(id,null)
+                    val fragment = EditFragment.newInstance(detailsID,null)
                    // val bundle = Bundle()
                     //bundle.putInt(EDIT_RECEIPT,id)
                   //  fragment.setArguments(bundle)
@@ -153,21 +148,12 @@
             }
 
             companion object {
-                /**
-                 * Use this factory method to create a new instance of
-                 * this fragment using the provided parameters.
-                 *
-                 * @param param1 Parameter 1.
-                 * @param param2 Parameter 2.
-                 * @return A new instance of fragment BlankFragment.
-                 */
                 // TODO: Rename and change types and number of parameters
                 @JvmStatic
-                fun newInstance(param1: String, param2: String) =
+                fun newInstance(param1: Int) =
                     DetailsFragment().apply {
                         arguments = Bundle().apply {
-                            putString(ARG_PARAM1, param1)
-                            putString(ARG_PARAM2, param2)
+                            putInt(DETAILS_ID_PARAM, param1)
                         }
                     }
             }
