@@ -13,7 +13,6 @@ import com.example.receipttracking.activities.DetailsActivity.Companion.NEW_ITEM
 import com.example.receipttracking.model.ReceiptsMockData.Companion.fillList
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
 import com.example.receipttracking.recyclerview.Adapter
-import kotlinx.android.synthetic.main.activity_items_list.*
 import kotlinx.android.synthetic.main.activity_list.*
 
 
@@ -30,22 +29,21 @@ if (receiptList == null) {
 
 
         recycler_view.apply {
+
             layoutManager = LinearLayoutManager(this@ListActivity, RecyclerView.VERTICAL, false)
             adapter = Adapter(receiptList)
         }
+
+
+
+
+
+
         button_add_new.setOnClickListener {
             val intent = Intent(this, DetailsActivity::class.java)
            intent.putExtra(ADD_NEW_RECEIPT,1)
-            intent.putExtra(EDIT_RECEIPT, -1)
-            NEW_ITEM_FLAG=true
             startActivity(intent)
-
         }
-
-
-
-
-
 
 
 
