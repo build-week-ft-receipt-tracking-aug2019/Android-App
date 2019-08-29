@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.receipttracking.fragment.DetailsFragment"
-    android:padding="4dp"
-    android:layout_margin="5dp">
+
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl"
+        android:background="@layout/my_edit_text_border"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,21 +18,23 @@
             android:id="@+id/ev_merchant_name"
             android:layout_width="match_parent"
             android:textAlignment="center"
-            android:layout_height="60dp"
-            android:hint="Merchant Name"
-            android:textSize="18dp"
+            android:layout_height="60sp"
+            android:hint="@string/merchant_name"
+            android:textSize="18sp"
             android:textStyle="bold"
+            android:background="#00000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/cl"
      />
 
         <EditText
             android:id="@+id/ev_category"
+            android:background="@layout/my_edit_text_border"
             android:layout_width="match_parent"
             android:textAlignment="center"
-            android:layout_height="wrap_content"
-            android:hint="Category"
-            android:textSize="18dp"
+            android:layout_height="60sp"
+            android:hint="@string/category"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/ev_date"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,70 +44,55 @@
             android:id="@+id/ev_date"
             android:layout_width="match_parent"
             android:textAlignment="center"
-            android:layout_height="wrap_content"
-            android:hint="Date"
-            android:textSize="18dp"
+            android:layout_height="60sp"
+            android:hint="@string/date"
+            android:textSize="18sp"
             android:textStyle="bold"
-
+            android:background="#00000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ev_category" />
 
 
         <EditText
             android:id="@+id/ev_amount"
+            android:background="@layout/my_edit_text_border"
             android:layout_width="match_parent"
             android:textAlignment="center"
-            android:layout_height="wrap_content"
-            android:hint="Amount"
-            android:textSize="18dp"
+            android:layout_height="60sp"
+            android:hint="@string/amount"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/ev_date"
             app:layout_constraintLeft_toLeftOf="@id/cl"
          />
 
-
-        <TextView
-            android:id="@+id/tv_mock_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="MockID"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/iv_receipt_image"
-            app:layout_constraintLeft_toLeftOf="@id/cl"
-            app:layout_constraintRight_toRightOf="@id/cl"
-            app:layout_constraintTop_toBottomOf="@+id/ev_amount" />
-
         <ImageView
             android:id="@+id/iv_receipt_image"
             android:layout_width="match_parent"
-            android:layout_height="0sp"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
-            android:layout_marginTop="5sp"
+            android:layout_height="0dp"
+            android:layout_margin="4sp"
             android:background="@color/colorAccent"
             android:padding="10sp"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_launcher_background"
-            android:text="Receipt Image"
+            android:src="@drawable/receipt_tracker_background"
+            android:text="@string/receipt_image"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/tv_mock_id"
             app:layout_constraintBottom_toTopOf="@id/btn_edit_image"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl"
 
 
-            />
+            app:layout_constraintTop_toBottomOf="@+id/ev_amount" />
 
         <Button
             android:id="@+id/btn_edit_image"
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="Edit/Add Receipt Image"
-            android:textSize="14dp"
-            android:layout_marginTop="4sp"
-            android:background="@color/colorAccent"
+            android:text="@string/edit_add_receipt_image"
+            android:textSize="14sp"
+            android:layout_margin="4sp"
+            android:background="@layout/my_edit_text_border"
             app:layout_constraintBottom_toTopOf="@id/btn_submit"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl" />
@@ -113,9 +101,9 @@
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="Confirm Changes"
-            android:textSize="14dp"
-            android:background="@color/colorAccent"
+            android:text="@string/confirm_changes"
+            android:textSize="14sp"
+            android:background="@layout/my_edit_text_border"
             android:layout_margin="4sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/cl"
