@@ -24,7 +24,9 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-
+if (receiptList == null) {
+    fillList()
+}
 
 
         recycler_view.apply {
@@ -55,5 +57,10 @@ class ListActivity : AppCompatActivity() {
 
 
 
+    }
+
+    override fun onResume() {
+        receiptList
+        super.onResume()
     }
 }

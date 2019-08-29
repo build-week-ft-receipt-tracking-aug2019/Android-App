@@ -35,7 +35,6 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
         setContentView(R.layout.activity_details)
 
 
-        
             //////remove this asap
             //////remove it!
 

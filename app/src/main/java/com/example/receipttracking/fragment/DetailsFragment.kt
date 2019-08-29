@@ -17,6 +17,7 @@
         import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
         import kotlinx.android.synthetic.main.details_fragment.*
         import com.example.receipttracking.activities.ListActivity
+        import com.example.receipttracking.model.ReceiptsMockData
         import com.example.receipttracking.model.utils.Companion.fromDateLong
         import java.util.*
 

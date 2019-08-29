@@ -63,10 +63,10 @@ class EditFragment : Fragment() {
 
  fun saveChanges(id:Int) {
 
-     var date= 1559594970L //System.currentTimeMillis() / 1000L  //toDateLong(ev_date.text.toString()) ?
+     var date = System.currentTimeMillis() / 1000L  //toDateLong(ev_date.text.toString()) ?
      var cost = 55.00 //ev_amount.text.toString().toDouble()
      var newReceipt = Receipts(
-         "",
+         " ",
          ev_category.text.toString(),
          ev_merchant_name.text.toString(),
          cost,
@@ -74,15 +74,26 @@ class EditFragment : Fragment() {
          id,
          0,
          uriS)
-    /* if (NEW_ITEM_FLAG) {
-         receiptList.add(newReceipt)
-       //  recycler_view.adapter!!.notifyDataSetChanged()
-         NEW_ITEM_FLAG=false
-     }
-     else{*/
-         receiptList[id]=newReceipt
-   //      recycler_view.adapter!!.notifyItemChanged(id)
-  //   }
+      if (NEW_ITEM_FLAG) {
+          ReceiptsMockData.receiptList
+     receiptList.add(newReceipt)
+          ReceiptsMockData.receiptList
+     NEW_ITEM_FLAG = false
+ }
+        else {
+
+          var newReceipt = Receipts(
+              "",
+              ev_category.text.toString(),
+              ev_merchant_name.text.toString(),
+              cost,
+              date,
+              receiptList[id].mockID,
+              receiptList[id].receiptImage,
+              "")
+        receiptList[id]=newReceipt
+
+         }
  }
 
 
@@ -104,19 +115,16 @@ class EditFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-       if (NEW_ITEM_FLAG) {
-            editID = receiptList.size
-        }
-        else {
+       if (NEW_ITEM_FLAG==false) {
             populate(editID as Int)
         }
 
         btn_submit.setOnClickListener {
-            if (editID != -1) {
+
                 saveChanges(editID as Int)
-             /*   val intent = Intent(view.context, ListActivity::class.java)
-                startActivity(intent)*/
-            }
+               val intent = Intent(view.context, ListActivity::class.java)
+            startActivity(intent)
+        //    fragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         btn_edit_image.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
