@@ -53,19 +53,24 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
         ReceiptsMockData.fillList()
         println(ReceiptsMockData.receiptList)
             //////remove it!
-        var fragment = EditFragment.newInstance(-1,1)
+
         var new = intent.getIntExtra(ADD_NEW_RECEIPT, -1)
         var edit = intent.getIntExtra(EDIT_RECEIPT,-1)
-        if (edit != -1){
-                DetailsFragment.newInstance(edit)
+
+        if (edit == -1){
+            var fragment = EditFragment.newInstance(-1,1)
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_holder, fragment)
+                .commit()
         }
         else {
-            EditFragment.newInstance(-1,1)
+            var fragment = DetailsFragment.newInstance(edit)
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_holder, fragment)
+                .commit()
         }
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_holder, fragment)
-            .commit()
+
 
 
     }
