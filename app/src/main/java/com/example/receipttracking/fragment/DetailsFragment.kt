@@ -25,7 +25,6 @@ private var detailsID = 0
 
 
 class DetailsFragment : Fragment() {
-    var mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
     private var listener: OnDetailsFragmentListener? = null
 
     /*
@@ -45,7 +44,7 @@ class DetailsFragment : Fragment() {
         //TODO:proper formatting for date and money, should be able to grab a freeware class for both thrings -- or may be handled inkotlin alreayd
         // either way come back to this
         tv_date.text = fromDateLong(currentReceipt.date)
-        tv_amount.text = mCurrencyFormat.format(currentReceipt.cost).toString()
+        tv_amount.text = currentReceipt.cost.toString()
         tv_mock_id.text = currentReceipt.mockID.toString()
 
         //if it's a mock receipt/no image specified set as appropriate resource file, otherwise set as uri

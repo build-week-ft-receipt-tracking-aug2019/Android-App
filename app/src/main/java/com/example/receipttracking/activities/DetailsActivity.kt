@@ -7,7 +7,7 @@ import android.os.Bundle
 import com.example.receipttracking.R
 import com.example.receipttracking.fragment.DetailsFragment
 import com.example.receipttracking.fragment.EditFragment
-import com.example.receipttracking.model.ReceiptsMockData
+
 
 class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentListener, EditFragment.OnEditFragmentListener {
 

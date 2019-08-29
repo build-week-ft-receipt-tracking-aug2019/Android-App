@@ -2,7 +2,6 @@ package com.example.receipttracking.fragment
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.ListActivity
 import android.content.Context
 import android.content.Intent
 import android.icu.text.NumberFormat
@@ -23,12 +22,9 @@ import com.example.receipttracking.model.Receipts
 import com.example.receipttracking.model.ReceiptsMockData
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
 import com.example.receipttracking.model.utils.Companion.fromDateLong
-import com.example.receipttracking.model.utils.Companion.toDateLong
-import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.details_fragment.iv_receipt_image
 import kotlinx.android.synthetic.main.details_fragment.tv_mock_id
 import kotlinx.android.synthetic.main.edit_fragment.*
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -57,7 +53,7 @@ class EditFragment : Fragment() {
         ev_merchant_name.setText(currentReceipt.merchantName)
         ev_category.setText(currentReceipt.category)
         ev_date.setText(fromDateLong(currentReceipt.date)).toString()
-        ev_amount.setText(mCurrencyFormat.format(currentReceipt.cost).toString())
+        ev_amount.setText(currentReceipt.cost.toString())
         tv_mock_id.text = currentReceipt.mockID.toString()
 
         //if it's a mock receipt/no image specified set as appropriate resource file, otherwise set as uri
