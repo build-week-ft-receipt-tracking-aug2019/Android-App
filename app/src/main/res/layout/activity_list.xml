@@ -6,27 +6,52 @@
     android:layout_height="match_parent"
     android:background="@android:color/black"
     tools:context=".activities.ListActivity">
+    <TextView
+        android:id="@+id/textView_past_receipts"
+        android:text="Past Receipts"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
 
+
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@id/button"
+        android:background="@color/colorAccent"
+        android:layout_margin="5dp"
+        app:layout_constraintBottom_toTopOf="@id/button_add_new"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf= "@id/textView_past_receipts"
 
         />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/button_add_new"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/recycler_view"
+        android:layout_centerInParent="true"
+        android:layout_margin="5dp"
+        android:background="@color/colorPrimary"
         android:text="@string/add_receipt"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recycler_view" />
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view" />
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
