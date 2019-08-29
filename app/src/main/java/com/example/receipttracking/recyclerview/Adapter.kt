@@ -39,6 +39,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
             textViewDate.text = receipt.date.toString()
 
 
+
         }
 
 
@@ -47,9 +48,13 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
+
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.activity_items_list, parent, false) as View
+
         )
+
+
     }
 
     override fun getItemCount() = receiptList.size
@@ -59,10 +64,6 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
        // ViewHolder.customView.setIDRef(position)
         ViewHolder.bindModel(receipt)
 
-
-        ViewHolder.customView.setOnClickListener {
-            CheckBoxView.isChecked = true
-        }
 
        ViewHolder.card.setOnClickListener { view ->
 
