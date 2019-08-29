@@ -80,6 +80,7 @@ class ReceiptsMockData {
                     ""
                 )
             )
+
             receiptList.add(
                 Receipts(
                     "Aland Streatfeild",
