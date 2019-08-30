@@ -7,11 +7,19 @@ import android.os.Bundle
 import com.example.receipttracking.R
 import com.example.receipttracking.fragment.DetailsFragment
 import com.example.receipttracking.fragment.EditFragment
-import com.example.receipttracking.model.ReceiptsMockData
 
 class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentListener, EditFragment.OnEditFragmentListener {
 
+/*
+*
+* when user is transfer to the details activity
+* depending on the content of the intents, they will be either sent
+* to a blank edit fragment to make a new receipt
+* or a details fragment to view an old receipt
+*
+* */
 
+// the values here are used to communicate within the app as to the current goals of the users actions
    companion object {
        const val ADD_NEW_RECEIPT = "2"
        const val EDIT_RECEIPT = "3"
@@ -19,13 +27,7 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
        var NEW_ITEM_FLAG =false
 
     }
-    override fun onDetailsFragmentInteraction(uri: Uri) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    override fun onEditFragmentInteraction(uri: Uri) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +52,9 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
         }
 
 
-
-
+    }
+    override fun onDetailsFragmentInteraction(uri: Uri) {
+    }
+    override fun onEditFragmentInteraction(uri: Uri) {
     }
 }

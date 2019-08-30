@@ -1,7 +1,7 @@
 package com.example.receipttracking.model
 
 import java.io.Serializable
-import java.util.*
+
 
 data class Receipts(
     var fullName:String,

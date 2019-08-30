@@ -10,7 +10,7 @@ import android.content.Intent
 import android.view.View.VISIBLE
 import android.view.WindowManager
 import com.example.receipttracking.R
-import com.example.receipttracking.model.ReceiptsMockData.Companion.fillList
+import com.example.receipttracking.model.DataRepository.Companion.fillList
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -20,15 +20,10 @@ class LoginActivity : AppCompatActivity() {
 
 
         /*
-        *
-        *
-        *
-        * create mock data:
-        *
-        *
-        *
+        * amimation
+        * create mock data
+        * list activity
         * */
-
         fillList()
 
 

@@ -11,21 +11,34 @@ import android.view.ViewGroup
 import androidx.core.net.toUri
 import com.example.receipttracking.R
 import com.example.receipttracking.activities.DetailsActivity.Companion.EDIT_RECEIPT
-import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
+import com.example.receipttracking.model.DataRepository.Companion.receiptList
 import kotlinx.android.synthetic.main.details_fragment.*
 import com.example.receipttracking.activities.ListActivity
 import com.example.receipttracking.model.utils.Companion.fromDateLong
 
 
 
-private var detailsID = 0
+/*
+*
+* displays most of the contents of a particular receipt
+* and provides the user with the option to edit any particular receipt
+*
+*
+* */
+
+
+
+
 
 
 class DetailsFragment : Fragment() {
     private var listener: OnDetailsFragmentListener? = null
+    private var detailsID = 0
 
-    /*a
-    *  functions:
+
+
+    /*
+    *
     * populate(id)
     * populates the fields based on the id provided
     * exists as an object itself in order to allow previous/next functionality
@@ -58,8 +71,6 @@ class DetailsFragment : Fragment() {
 
             //we'll take out the previous before we present tomorrow
 
-
-
         //if it's a mock receipt/no image specified set as appropriate resource file, otherwise set as uri
         if (currentReceipt.receiptImage != 0) {
             iv_receipt_image.setImageResource(currentReceipt.receiptImage)
@@ -72,6 +83,9 @@ class DetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        // thos is where we get the position of the chosen receipt which will be gathered from .arguments
         arguments?.let {
             detailsID = arguments?.getInt(EDIT_RECEIPT) ?: 0
         }
@@ -91,7 +105,9 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        // one the views are created, populate them with particular receipt lcoated at receiptList[detailsID]
         populate(detailsID)
+
 
         btn_previous.setOnClickListener {
             if (detailsID >= 1) {
@@ -110,6 +126,8 @@ class DetailsFragment : Fragment() {
             populate(detailsID)
         }
 
+
+        // the edit button opens a new EditFragment with the position in the list as detailsID
         btn_edit.setOnClickListener {
             val fragment = EditFragment.newInstance(detailsID, null)
             // val bundle = Bundle()

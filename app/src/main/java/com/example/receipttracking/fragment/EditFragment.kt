@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.format.DateFormat
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,18 +18,32 @@ import com.example.receipttracking.activities.DetailsActivity.Companion.KEY_RECE
 import com.example.receipttracking.activities.DetailsActivity.Companion.NEW_ITEM_FLAG
 import com.example.receipttracking.activities.ListActivity
 import com.example.receipttracking.model.Receipts
-import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
+import com.example.receipttracking.model.DataRepository.Companion.receiptList
 import com.example.receipttracking.model.utils.Companion.fromDateLong
 import kotlinx.android.synthetic.main.details_fragment.iv_receipt_image
 import kotlinx.android.synthetic.main.edit_fragment.*
-import java.util.*
 
+
+
+
+/*
+*
+* edit handles both altering existing receipts and adding new receipts
+* its populates it's view's fields with the populate function and uses saveChanges to
+* determine if it should as add a new entry in the list or alter an existing receipt
+*
+*
+*
+* */
 
 class EditFragment : Fragment() {
     private var editID: Int? = null ?: -1
     private var newID: Int? = null ?: -1
     private var listener: OnEditFragmentListener? = null
     private var uriS: String = ""
+
+
+
     /*
     *  functions:
     * populate(id)
@@ -133,15 +146,7 @@ class EditFragment : Fragment() {
 
         btn_submit.setOnClickListener {
             saveChanges(editID as Int)
-
-/*            val fragment = DetailsFragment.newInstance(editID as Int)
-            // val bundle = Bundle()
-            //bundle.putInt(EDIT_RECEIPT,id)
-            //  fragment.setArguments(bundle)
-            val transaction = fragmentManager!!.beginTransaction()
-            transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
-            transaction.addToBackStack(null)
-            transaction.commit()*/
+            //returns us to the ListActivity
             val intent = Intent(view.context, ListActivity::class.java)
             startActivity(intent)
             //    fragmentManager?.beginTransaction()?.remove(this)?.commit()

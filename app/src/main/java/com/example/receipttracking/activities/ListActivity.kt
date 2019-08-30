@@ -1,7 +1,6 @@
 package com.example.receipttracking.activities
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,13 +8,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.receipttracking.R
 import com.example.receipttracking.activities.DetailsActivity.Companion.ADD_NEW_RECEIPT
 import com.example.receipttracking.activities.DetailsActivity.Companion.NEW_ITEM_FLAG
-import com.example.receipttracking.model.ReceiptsMockData.Companion.fillList
-import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
+import com.example.receipttracking.model.DataRepository.Companion.receiptList
 import com.example.receipttracking.recyclerview.Adapter
 import kotlinx.android.synthetic.main.activity_list.*
 
 
 class ListActivity : AppCompatActivity() {
+
+        /*
+        *  make recyclerview
+        *which displays our list of receipts
+        * the custom checkbox allows users to highlight receipts
+        * add receipts
+        * and we can click on a receipt to get to  a details view
+         */
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

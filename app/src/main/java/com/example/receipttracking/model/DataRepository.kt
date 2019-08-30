@@ -3,23 +3,12 @@ package com.example.receipttracking.model
 import com.example.receipttracking.R
 
 
-class ReceiptsMockData {
+class DataRepository {
 
     /*
     *
     * In order to accomadate both mock receipts and newly entered receipts,
     * there is both a receiptImageResource INT  and a receiptImageURI: String
-    *
-    * fullname
-    * category
-    * merchantname
-    * cost
-    * date
-    *
-    *
-    * mockid
-    *
-    * ^^this is the number you're seeing ronnie
     *
     *
     *
@@ -43,8 +32,6 @@ class ReceiptsMockData {
                     1559725103,
                     31337,
                     //^^^ this is mock id
-
-
                     R.drawable.receipt1,
                     "",
                     false
