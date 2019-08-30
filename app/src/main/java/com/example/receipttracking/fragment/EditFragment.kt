@@ -1,10 +1,11 @@
 package com.example.receipttracking.fragment
+
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.icu.text.NumberFormat
 import android.net.Uri
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,28 +19,23 @@ import com.example.receipttracking.activities.DetailsActivity.Companion.KEY_RECE
 import com.example.receipttracking.activities.DetailsActivity.Companion.NEW_ITEM_FLAG
 import com.example.receipttracking.activities.ListActivity
 import com.example.receipttracking.model.Receipts
-import com.example.receipttracking.model.ReceiptsMockData
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
 import com.example.receipttracking.model.utils.Companion.fromDateLong
 import kotlinx.android.synthetic.main.details_fragment.iv_receipt_image
-import kotlinx.android.synthetic.main.details_fragment.tv_mock_id
 import kotlinx.android.synthetic.main.edit_fragment.*
 import java.util.*
 
 
 class EditFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var editID: Int? = null ?: -1
     private var newID: Int? = null ?: -1
     private var listener: OnEditFragmentListener? = null
     private var uriS: String = ""
-    var mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
     /*
     *  functions:
     * populate(id)
     * populates the fields based on the id provided
     * exists as an object itself in order to allow previous/next functionality
-    *
     *
     *
     * */
@@ -63,40 +59,49 @@ class EditFragment : Fragment() {
 
 
     fun saveChanges(id: Int) {
-
-        var date = System.currentTimeMillis() / 1000L  //toDateLong(ev_date.text.toString()) ?
-        var cost = 55.00 //ev_amount.text.toString().toDouble()
-        var newReceipt = Receipts(
-            " ",
-            ev_category.text.toString(),
-            ev_merchant_name.text.toString(),
-            cost,
-            date,
-            31337,
-            //this is where the code was getting set to -1 on new entries
-            //could have set it to receiptList.size
-            0,
-            uriS
-        )
-        if (NEW_ITEM_FLAG) {
-            editID = receiptList.size
-            receiptList.add(newReceipt)
-            NEW_ITEM_FLAG = false
+        if (remove_box.isChecked && !NEW_ITEM_FLAG) {
+            receiptList.removeAt(id)
         } else {
 
+            var date = System.currentTimeMillis() / 1000L  //toDateLong(ev_date.text.toString()) ?
+            var cost =1.00
+            if (ev_amount.text.toString() !="") {
+                cost = ev_amount.text.toString().toDouble()
+            }
+            else {
+                cost = 100.00
+            }
             var newReceipt = Receipts(
-                "",
+                " ",
                 ev_category.text.toString(),
                 ev_merchant_name.text.toString(),
                 cost,
                 date,
-                receiptList[id].mockID,
-                ///this is where edited entries were getting set "correctly"
-                receiptList[id].receiptImage,
-                ""
+                31337,
+                //this is where the code was getting set to -1 on new entries
+                //could have set it to receiptList.size
+                0,
+                uriS
             )
-            receiptList[id] = newReceipt
+            if (NEW_ITEM_FLAG) {
+                editID = receiptList.size
+                receiptList.add(newReceipt)
+                NEW_ITEM_FLAG = false
+            } else {
 
+                var newReceipt = Receipts(
+                    "",
+                    ev_category.text.toString(),
+                    ev_merchant_name.text.toString(),
+                    cost,
+                    date,
+                    receiptList[id].mockID,
+                    ///this is where edited entries were getting set "correctly"
+                    receiptList[id].receiptImage,
+                    ""
+                )
+                receiptList[id] = newReceipt
+            }
         }
     }
 

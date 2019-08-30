@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:textAlignment="center"
             android:layout_height="60sp"
-            android:hint="@string/date"
+            android:hint="8/30/2019"
             android:textSize="18sp"
             android:textStyle="bold"
             android:background="#00000000"
@@ -81,21 +81,31 @@
             app:layout_constraintBottom_toTopOf="@id/btn_edit_image"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl"
-
-
             app:layout_constraintTop_toBottomOf="@+id/ev_amount" />
 
         <Button
+            android:elevation="1dp"
             android:id="@+id/btn_edit_image"
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="@string/edit_add_receipt_image"
-            android:textSize="14sp"
             android:layout_margin="4sp"
             android:background="@layout/my_edit_text_border"
+            android:text="@string/edit_add_receipt_image"
+            android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@id/btn_submit"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl" />
+
+        <CheckBox
+            android:id="@+id/remove_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:elevation="33dp"
+            android:text="Delete?"
+            app:layout_constraintRight_toRightOf="@id/btn_submit"
+            app:layout_constraintTop_toTopOf="@id/btn_submit"
+            app:layout_goneMarginRight="200dp" />
 
         <Button
             android:id="@+id/btn_submit"
@@ -108,6 +118,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl" />
+
+
 
         <!-- previous and next buttons cut as of 9:44 on the 28th
         <Button
