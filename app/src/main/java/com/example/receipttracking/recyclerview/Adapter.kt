@@ -1,6 +1,3 @@
-package com.example.receipttracking.recyclerview
-
-
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
@@ -25,6 +22,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
 * */
 
 
+    // instantiates views
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val card: CardView = view.card_view
         val textViewName: TextView = view.tv_name
@@ -32,6 +30,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
         val textViewDate: TextView = view.tv_date
         val customView = view.customView_checkbox
 
+        //Bind view to Model
 
         fun bindModel(receipt: Receipts) {
             textViewName.text = receipt.merchantName
@@ -50,6 +49,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
 
+            //Inflates layout
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.activity_items_list, parent, false) as View
 
@@ -62,11 +62,13 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
 
     override fun onBindViewHolder(ViewHolder: ViewHolder, position: Int) {
         val receipt = receiptList[position]
-       // ViewHolder.customView.setIDRef(position)
+        // ViewHolder.customView.setIDRef(position)
         ViewHolder.bindModel(receipt)
-       ViewHolder.customView.setPosition(position)
+        ViewHolder.customView.setPosition(position)
 
-       ViewHolder.card.setOnClickListener { view ->
+        // sets on click listener for cards
+
+        ViewHolder.card.setOnClickListener { view ->
 
             val intent = Intent(view.context, DetailsActivity::class.java)
             intent.putExtra(DetailsActivity.EDIT_RECEIPT, position)
@@ -76,7 +78,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
                 "tv_merchant_name"
             ).toBundle()
             view.context.startActivity(intent, optionsBundle)
-           // send the position in the list to DetailsActivity and hence the users intent to display details 
+            // send the position in the list to DetailsActivity and hence the users intent to display details
 
 
         }
