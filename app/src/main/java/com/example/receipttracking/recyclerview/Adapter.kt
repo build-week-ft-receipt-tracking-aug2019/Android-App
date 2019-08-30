@@ -12,33 +12,26 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.receipttracking.CheckBoxView
 import com.example.receipttracking.R
 import kotlinx.android.synthetic.main.activity_items_list.view.*
 import com.example.receipttracking.activities.DetailsActivity
 
 
-
-
-
-class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
-
+class Adapter(private val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        // Holds and sets views
         val card: CardView = view.card_view
         val textViewName: TextView = view.tv_name
         val textViewAmount: TextView = view.tv_amount
         val textViewDate: TextView = view.tv_date
-        val customView = view.customView_checkbox
 
 
         fun bindModel(receipt: Receipts) {
             textViewName.text = receipt.merchantName
             textViewAmount.text = receipt.cost.toString()
             textViewDate.text = receipt.date.toString()
-
-
 
         }
 
@@ -48,7 +41,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-
+            //Inflates activity_items_list layout
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.activity_items_list, parent, false) as View
 
@@ -61,11 +54,10 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
 
     override fun onBindViewHolder(ViewHolder: ViewHolder, position: Int) {
         val receipt = receiptList[position]
-       // ViewHolder.customView.setIDRef(position)
         ViewHolder.bindModel(receipt)
+        ViewHolder.card.setOnClickListener { view ->
 
-
-       ViewHolder.card.setOnClickListener { view ->
+            //Sends intent from recycler view to DetailsActivity
 
             val intent = Intent(view.context, DetailsActivity::class.java)
             intent.putExtra(DetailsActivity.EDIT_RECEIPT, position)

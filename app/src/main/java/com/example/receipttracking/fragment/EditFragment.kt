@@ -1,4 +1,5 @@
 package com.example.receipttracking.fragment
+
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -18,11 +19,9 @@ import com.example.receipttracking.activities.DetailsActivity.Companion.KEY_RECE
 import com.example.receipttracking.activities.DetailsActivity.Companion.NEW_ITEM_FLAG
 import com.example.receipttracking.activities.ListActivity
 import com.example.receipttracking.model.Receipts
-import com.example.receipttracking.model.ReceiptsMockData
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
 import com.example.receipttracking.model.utils.Companion.fromDateLong
 import kotlinx.android.synthetic.main.details_fragment.iv_receipt_image
-import kotlinx.android.synthetic.main.details_fragment.tv_mock_id
 import kotlinx.android.synthetic.main.edit_fragment.*
 import java.util.*
 

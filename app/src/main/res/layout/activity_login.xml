@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.LoginActivity"
-    android:id="@+id/login_view"
     android:background="@android:color/black"
-    >
+    tools:context=".activities.LoginActivity">
 
     <ImageView
         android:id="@+id/imageView_receipt_icon"
@@ -14,53 +13,52 @@
         android:layout_height="60sp"
         android:layout_centerInParent="true"
         android:contentDescription="@string/image_of_a_receipt"
-        android:src="@drawable/receipt_tracker_logo"
-        />
+        android:src="@drawable/receipt_tracker_logo" />
+
     <RelativeLayout
         android:id="@+id/animationView_after"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="20sp"
         android:layout_marginStart="20sp"
         android:layout_marginTop="130sp"
+        android:layout_marginEnd="20sp"
         android:visibility="gone">
-    <ProgressBar
-        android:id="@+id/progress_bar_loading"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="12sp"
-        android:layout_alignParentBottom="true"
-        android:padding="10sp"
-        android:theme="@style/Widget.AppCompat.ProgressBar"
-        />
 
-    <TextView
-        android:id="@+id/receipt_keeps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/receipt_keeps"
-        android:textColor="@android:color/white"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        />
+        <ProgressBar
+            android:id="@+id/progress_bar_loading"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="12sp"
+            android:layout_alignParentBottom="true"
+            android:padding="10sp"
+            android:theme="@style/Widget.AppCompat.ProgressBar" />
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/button_login"
-        android:layout_below="@id/receipt_keeps"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/editText_email"
+        <TextView
+            android:id="@+id/receipt_keeps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
+            android:text="@string/receipt_keeps"
             android:textColor="@android:color/white"
-            android:textColorHint="@color/colorAccent"
-            android:textSize="15sp"/>
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/button_login"
+            android:layout_below="@id/receipt_keeps"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editText_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/colorAccent"
+                android:textSize="15sp" />
 
             <EditText
                 android:id="@+id/editText_password"
@@ -70,58 +68,59 @@
                 android:hint="@string/password"
                 android:textColor="@android:color/white"
                 android:textColorHint="@color/colorAccent"
-                android:textSize="15sp"
-                />
-        <FrameLayout
+                android:textSize="15sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sign_up"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:text="@string/forgot_password"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_login"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:layout_above="@+id/textView_skip"
+            android:layout_margin="5sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView_skip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:padding="5sp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sign_up"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
-                android:text="@string/forgot_password"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"/>
-        </FrameLayout>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button_login"
-        android:layout_width="match_parent"
-        android:layout_height="55sp"
-        android:layout_above="@+id/textView_skip"
-        android:layout_margin="5sp"
-        android:background="@color/colorPrimary"
-        android:text="@string/login"
-        android:textAllCaps="false"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"/>
-
-    <TextView
-        android:id="@+id/textView_skip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10sp"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="@string/skip"
-        android:textColor="@android:color/white"
-        android:textSize="15sp"/>
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10sp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="@string/skip"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
 
 
     </RelativeLayout>

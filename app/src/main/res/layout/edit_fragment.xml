@@ -10,30 +10,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl"
-        android:background="@layout/my_edit_text_border"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@layout/my_edit_text_border">
 
         <EditText
             android:id="@+id/ev_merchant_name"
             android:layout_width="match_parent"
-            android:textAlignment="center"
             android:layout_height="60sp"
+            android:background="#00000000"
             android:hint="@string/merchant_name"
+            android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:background="#00000000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/cl"
-     />
+            app:layout_constraintTop_toTopOf="@id/cl" />
 
         <EditText
             android:id="@+id/ev_category"
-            android:background="@layout/my_edit_text_border"
             android:layout_width="match_parent"
-            android:textAlignment="center"
             android:layout_height="60sp"
+            android:background="@layout/my_edit_text_border"
             android:hint="@string/category"
+            android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/ev_date"
@@ -43,28 +42,27 @@
         <EditText
             android:id="@+id/ev_date"
             android:layout_width="match_parent"
-            android:textAlignment="center"
             android:layout_height="60sp"
+            android:background="#00000000"
             android:hint="@string/date"
+            android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:background="#00000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ev_category" />
 
 
         <EditText
             android:id="@+id/ev_amount"
-            android:background="@layout/my_edit_text_border"
             android:layout_width="match_parent"
-            android:textAlignment="center"
             android:layout_height="60sp"
+            android:background="@layout/my_edit_text_border"
             android:hint="@string/amount"
+            android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/ev_date"
             app:layout_constraintLeft_toLeftOf="@id/cl"
-         />
+            app:layout_constraintTop_toBottomOf="@id/ev_date" />
 
         <ImageView
             android:id="@+id/iv_receipt_image"
@@ -89,10 +87,10 @@
             android:id="@+id/btn_edit_image"
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="@string/edit_add_receipt_image"
-            android:textSize="14sp"
             android:layout_margin="4sp"
             android:background="@layout/my_edit_text_border"
+            android:text="@string/edit_add_receipt_image"
+            android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@id/btn_submit"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl" />
@@ -101,10 +99,10 @@
             android:id="@+id/btn_submit"
             android:layout_width="match_parent"
             android:layout_height="45sp"
+            android:layout_margin="4sp"
+            android:background="@layout/my_edit_text_border"
             android:text="@string/confirm_changes"
             android:textSize="14sp"
-            android:background="@layout/my_edit_text_border"
-            android:layout_margin="4sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="@id/cl"
             app:layout_constraintRight_toRightOf="@id/cl" />
