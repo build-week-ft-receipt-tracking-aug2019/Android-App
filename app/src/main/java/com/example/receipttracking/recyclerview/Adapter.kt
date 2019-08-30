@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.receipttracking.CheckBoxView
 import com.example.receipttracking.R
 import kotlinx.android.synthetic.main.activity_items_list.view.*
 import com.example.receipttracking.activities.DetailsActivity

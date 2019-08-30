@@ -23,31 +23,20 @@ class ListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_list)
 
 
+        //Applies layout manager to recyclerview, listactivity
         recycler_view.apply {
             layoutManager = LinearLayoutManager(this@ListActivity, RecyclerView.VERTICAL, false)
             adapter = Adapter(receiptList)
         }
 
 
-
-
+        //On button click startsactivity with intent
         button_add_new.setOnClickListener {
             val intent = Intent(this, DetailsActivity::class.java)
            intent.putExtra(ADD_NEW_RECEIPT,1)
             startActivity(intent)
             NEW_ITEM_FLAG=true
         }
-
-
-
-
-
-
-
-
-
-
-
 
     }
 }

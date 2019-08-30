@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <com.example.receipttracking.AltCheckBoxView
+        <com.example.receipttracking.CheckBoxView
             android:id="@+id/customView_checkbox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_date"
