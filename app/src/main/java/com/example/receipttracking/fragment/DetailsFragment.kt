@@ -100,7 +100,7 @@ class DetailsFragment : Fragment() {
             //bundle.putInt(EDIT_RECEIPT,id)
             //  fragment.setArguments(bundle)
             val transaction = fragmentManager!!.beginTransaction()
-            transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
+            transaction.replace(R.id.fragment_holder, fragment)
             transaction.addToBackStack(null)
             transaction.commit()
         }

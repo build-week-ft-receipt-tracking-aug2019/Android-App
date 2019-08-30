@@ -12,7 +12,6 @@ import com.example.receipttracking.model.ReceiptsMockData
 class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentListener, EditFragment.OnEditFragmentListener {
 
 
-
    companion object {
        const val ADD_NEW_RECEIPT = "2"
        const val EDIT_RECEIPT = "3"

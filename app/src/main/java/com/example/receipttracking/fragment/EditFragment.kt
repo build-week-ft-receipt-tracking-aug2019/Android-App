@@ -46,12 +46,12 @@ class EditFragment : Fragment() {
 
     fun populate(id: Int) {
         //get the receipt object at the list editID
-        var currentReceipt = ReceiptsMockData.receiptList[id]
+        var currentReceipt = receiptList[id]
         ev_merchant_name.setText(currentReceipt.merchantName)
         ev_category.setText(currentReceipt.category)
         ev_date.setText(fromDateLong(currentReceipt.date)).toString()
         ev_amount.setText(currentReceipt.cost.toString())
-        tv_mock_id.text = currentReceipt.mockID.toString()
+
 
         //if it's a mock receipt/no image specified set as appropriate resource file, otherwise set as uri
         if (currentReceipt.receiptImage != 0) {
