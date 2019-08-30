@@ -2,9 +2,7 @@ package com.example.receipttracking.fragment
 
 import android.content.Context
 import android.content.Intent
-import android.icu.text.NumberFormat
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,9 +14,8 @@ import com.example.receipttracking.activities.DetailsActivity.Companion.EDIT_REC
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
 import kotlinx.android.synthetic.main.details_fragment.*
 import com.example.receipttracking.activities.ListActivity
-import com.example.receipttracking.model.ReceiptsMockData
 import com.example.receipttracking.model.utils.Companion.fromDateLong
-import java.util.*
+
 
 
 private var detailsID = 0
@@ -27,7 +24,7 @@ private var detailsID = 0
 class DetailsFragment : Fragment() {
     private var listener: OnDetailsFragmentListener? = null
 
-    /*
+    /*a
     *  functions:
     * populate(id)
     * populates the fields based on the id provided

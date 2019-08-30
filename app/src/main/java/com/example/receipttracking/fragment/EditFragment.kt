@@ -1,6 +1,4 @@
 package com.example.receipttracking.fragment
-
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -18,6 +16,7 @@ import com.example.receipttracking.activities.DetailsActivity.Companion.ADD_NEW_
 import com.example.receipttracking.activities.DetailsActivity.Companion.EDIT_RECEIPT
 import com.example.receipttracking.activities.DetailsActivity.Companion.KEY_RECEIPT
 import com.example.receipttracking.activities.DetailsActivity.Companion.NEW_ITEM_FLAG
+import com.example.receipttracking.activities.ListActivity
 import com.example.receipttracking.model.Receipts
 import com.example.receipttracking.model.ReceiptsMockData
 import com.example.receipttracking.model.ReceiptsMockData.Companion.receiptList
@@ -35,17 +34,15 @@ class EditFragment : Fragment() {
     private var listener: OnEditFragmentListener? = null
     private var uriS: String = ""
     var mCurrencyFormat = NumberFormat.getCurrencyInstance(Locale.US)
-    @SuppressLint("NewApi")
-
-            /*
-            *  functions:
-            * populate(id)
-            * populates the fields based on the id provided
-            * exists as an object itself in order to allow previous/next functionality
-            *
-            *
-            *
-            * */
+    /*
+    *  functions:
+    * populate(id)
+    * populates the fields based on the id provided
+    * exists as an object itself in order to allow previous/next functionality
+    *
+    *
+    *
+    * */
 
     fun populate(id: Int) {
         //get the receipt object at the list editID
@@ -126,15 +123,16 @@ class EditFragment : Fragment() {
         btn_submit.setOnClickListener {
             saveChanges(editID as Int)
 
-            val fragment = DetailsFragment.newInstance(editID as Int)
+/*            val fragment = DetailsFragment.newInstance(editID as Int)
             // val bundle = Bundle()
             //bundle.putInt(EDIT_RECEIPT,id)
             //  fragment.setArguments(bundle)
             val transaction = fragmentManager!!.beginTransaction()
             transaction.replace(com.example.receipttracking.R.id.fragment_holder, fragment)
             transaction.addToBackStack(null)
-            transaction.commit()
-
+            transaction.commit()*/
+            val intent = Intent(view.context, ListActivity::class.java)
+            startActivity(intent)
             //    fragmentManager?.beginTransaction()?.remove(this)?.commit()
         }
         btn_edit_image.setOnClickListener {

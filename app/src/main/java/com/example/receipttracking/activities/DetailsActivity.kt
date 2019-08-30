@@ -7,7 +7,7 @@ import android.os.Bundle
 import com.example.receipttracking.R
 import com.example.receipttracking.fragment.DetailsFragment
 import com.example.receipttracking.fragment.EditFragment
-
+import com.example.receipttracking.model.ReceiptsMockData
 
 class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentListener, EditFragment.OnEditFragmentListener {
 
@@ -17,9 +17,7 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
        const val ADD_NEW_RECEIPT = "2"
        const val EDIT_RECEIPT = "3"
        const val KEY_RECEIPT = 1
-       var NEW_ITEM_FLAG = false
-
-
+       var NEW_ITEM_FLAG =false
 
     }
     override fun onDetailsFragmentInteraction(uri: Uri) {
@@ -35,8 +33,6 @@ class DetailsActivity : AppCompatActivity(), DetailsFragment.OnDetailsFragmentLi
         setContentView(R.layout.activity_details)
 
 
-            //////remove this asap
-            //////remove it!
 
         var new = intent.getIntExtra(ADD_NEW_RECEIPT, -1)
         var edit = intent.getIntExtra(EDIT_RECEIPT,-1)
