@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.edit_fragment.*
 import java.util.*
 
 
-class EditFragment : Fragment() {
+class EditFragment : Fragment() {  
     // TODO: Rename and change types of parameters
     private var editID: Int? = null ?: -1
     private var newID: Int? = null ?: -1
