@@ -21,7 +21,10 @@ import com.example.receipttracking.activities.DetailsActivity
 
 
 class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
-
+/*
+* gets receiptsList and displays in views
+*
+* */
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -75,6 +78,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
                 "tv_merchant_name"
             ).toBundle()
             view.context.startActivity(intent, optionsBundle)
+           // send the position in the list to DetailsActivity and hence the users intent to display details 
 
 
         }

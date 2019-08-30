@@ -6,6 +6,15 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 
 class CheckBoxView (context: Context, attributeSet: AttributeSet): LinearLayout(context, attributeSet){
+
+    /*
+  *
+  * view allows for automatic click handling
+  * which sends a booleon value to the list of receipts on user interaction
+  * and programatically the visual representation of this value
+  *
+  * */
+
     companion object {
         private var checkInternal = false
         private var position = 0
