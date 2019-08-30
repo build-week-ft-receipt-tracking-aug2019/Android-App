@@ -15,23 +15,33 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.receipttracking.R
 import kotlinx.android.synthetic.main.activity_items_list.view.*
 import com.example.receipttracking.activities.DetailsActivity
+import com.example.receipttracking.model.utils
 
 
-class Adapter(private val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+/*
+* gets receiptsList and displays in views
+*
+* */
 
 
+    // instantiates views
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        // Holds and sets views
         val card: CardView = view.card_view
         val textViewName: TextView = view.tv_name
         val textViewAmount: TextView = view.tv_amount
         val textViewDate: TextView = view.tv_date
+        val customView = view.customView_checkbox
 
+        //Bind view to Model
 
         fun bindModel(receipt: Receipts) {
             textViewName.text = receipt.merchantName
             textViewAmount.text = receipt.cost.toString()
-            textViewDate.text = receipt.date.toString()
+            textViewDate.text = utils.fromDateLong(receipt.date)
+
+
+
 
         }
 
@@ -41,7 +51,8 @@ class Adapter(private val receiptList: MutableList<Receipts>) : RecyclerView.Ada
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            //Inflates activity_items_list layout
+
+            //Inflates layout
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.activity_items_list, parent, false) as View
 
@@ -54,10 +65,13 @@ class Adapter(private val receiptList: MutableList<Receipts>) : RecyclerView.Ada
 
     override fun onBindViewHolder(ViewHolder: ViewHolder, position: Int) {
         val receipt = receiptList[position]
+       // ViewHolder.customView.setIDRef(position)
         ViewHolder.bindModel(receipt)
-        ViewHolder.card.setOnClickListener { view ->
+       ViewHolder.customView.setPosition(position)
 
-            //Sends intent from recycler view to DetailsActivity
+        // sets on click listener for cards
+
+       ViewHolder.card.setOnClickListener { view ->
 
             val intent = Intent(view.context, DetailsActivity::class.java)
             intent.putExtra(DetailsActivity.EDIT_RECEIPT, position)
@@ -67,6 +81,7 @@ class Adapter(private val receiptList: MutableList<Receipts>) : RecyclerView.Ada
                 "tv_merchant_name"
             ).toBundle()
             view.context.startActivity(intent, optionsBundle)
+           // send the position in the list to DetailsActivity and hence the users intent to display details 
 
 
         }

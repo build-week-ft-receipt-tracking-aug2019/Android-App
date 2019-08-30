@@ -10,7 +10,7 @@ import android.content.Intent
 import android.view.View.VISIBLE
 import android.view.WindowManager
 import com.example.receipttracking.R
-import com.example.receipttracking.model.ReceiptsMockData.Companion.fillList
+import com.example.receipttracking.model.DataRepository.Companion.fillList
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -20,15 +20,10 @@ class LoginActivity : AppCompatActivity() {
 
 
         /*
-        *
-        *
-        *
-        * create mock data:
-        *
-        *
-        *
+        * amimation
+        * create mock data
+        * list activity
         * */
-
         fillList()
 
 
@@ -39,6 +34,8 @@ class LoginActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         setContentView(R.layout.activity_login)
+
+        //Delays animations and login to represent loading
 
         object : CountDownTimer(1000, 1000){
             override fun onFinish() {
@@ -53,11 +50,13 @@ class LoginActivity : AppCompatActivity() {
 
 
         button_login.setOnClickListener {
+            //Starts activity with intent
             val intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
         }
 
         textView_skip.setOnClickListener {
+            //Starts activity with intent
             val intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
         }
@@ -73,18 +72,22 @@ class LoginActivity : AppCompatActivity() {
 
         }.setListener(object : Animator.AnimatorListener {
             override fun onAnimationCancel(p0: Animator?) {
+                //Action on animation cancel
 
             }
 
             override fun onAnimationStart(p0: Animator?) {
+                //Action on animation start
 
             }
 
             override fun onAnimationRepeat(p0: Animator?) {
+                //Action on animation repeat
 
             }
 
             override fun onAnimationEnd(p0: Animator?) {
+                //On animation end makes visible
                 animationView_after.visibility = VISIBLE
             }
 
@@ -94,9 +97,6 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
-
-
-
 
 
 

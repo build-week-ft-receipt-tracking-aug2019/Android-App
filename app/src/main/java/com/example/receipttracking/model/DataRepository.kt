@@ -3,19 +3,15 @@ package com.example.receipttracking.model
 import com.example.receipttracking.R
 
 
-class ReceiptsMockData {
+class DataRepository {
 
     /*
     *
     * In order to accomadate both mock receipts and newly entered receipts,
     * there is both a receiptImageResource INT  and a receiptImageURI: String
     *
-    * fullname
-    * category
-    * merchantname
-    * cost
-    * date
-    * mockid
+    *
+    *
     * receiptimageresource
     * imageURI
     *
@@ -34,9 +30,11 @@ class ReceiptsMockData {
                     "Auer LLC",
                     284.5,
                     1559725103,
-                    1,
+                    31337,
+                    //^^^ this is mock id
                     R.drawable.receipt1,
-                    ""
+                    "",
+                    false
 
                 )
             )
@@ -49,9 +47,10 @@ class ReceiptsMockData {
                     "Wintheiser-Von",
                     53.3,
                     1559594970,
-                    2,
+                    31337,
                     R.drawable.receipt2,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -63,9 +62,10 @@ class ReceiptsMockData {
                     "Carter-Kohler",
                     49.94,
                     1549543289,
-                    3,
+                    31337,
                     R.drawable.receipt3,
-                    ""
+                    "",
+                    true
                 )
             )
             receiptList.add(
@@ -75,9 +75,10 @@ class ReceiptsMockData {
                     "Mosciski LLC",
                     231.05,
                     1555447238,
-                    4,
+                    31337,
                     R.drawable.receipt6,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -88,9 +89,10 @@ class ReceiptsMockData {
                     "Watsica and Sons",
                     27.06,
                     1554225573,
-                    5,
+                    31337,
                     R.drawable.receipt4,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -102,9 +104,10 @@ class ReceiptsMockData {
                     "Wolf, Bartell and Daugherty",
                     23.89,
                     1556265103,
-                    6,
+                    31337,
                     R.drawable.receipt5,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -115,9 +118,10 @@ class ReceiptsMockData {
                     "Grady-Schaefer",
                     200.45,
                     1540639711,
-                    7,
+                    31337,
                     R.drawable.receipt7,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -129,9 +133,10 @@ class ReceiptsMockData {
                     "Wuckert, Price and Funk",
                     51.62,
                     1558916915,
-                    8,
+                    31337,
                     R.drawable.receipt8,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -143,9 +148,10 @@ class ReceiptsMockData {
                     "McCullough-McKenzie",
                     217.82,
                     1540168811,
-                    9,
+                    31337,
                     R.drawable.receipt9,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -157,9 +163,10 @@ class ReceiptsMockData {
                     "Hahn, Hauck and Langosh",
                     299.77,
                     1550174938,
-                    10,
+                    31337,
                     R.drawable.receipt10,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -171,9 +178,10 @@ class ReceiptsMockData {
                     "Witting-Konopelski",
                     68.05,
                     1563718340,
-                    11,
+                    31337,
                     R.drawable.receipt1,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -184,9 +192,10 @@ class ReceiptsMockData {
                     "Denesik Inc",
                     160.08,
                     1538492734,
-                    12,
+                    31337,
                     R.drawable.receipt2,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -197,9 +206,10 @@ class ReceiptsMockData {
                     "Carter, McCullough and Senger",
                     126.9,
                     1560000373,
-                    13,
+                    31337,
                     R.drawable.receipt3,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -210,9 +220,10 @@ class ReceiptsMockData {
                     "McLaughlin and Sons",
                     218.23,
                     1554597668,
-                    14,
+                    31337,
                     R.drawable.receipt4,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -223,9 +234,10 @@ class ReceiptsMockData {
                     "Green, Gusikowski and Funk",
                     245.54,
                     1557126126,
-                    15,
+                    31337,
                     R.drawable.receipt5,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -236,9 +248,10 @@ class ReceiptsMockData {
                     "Borer, Hartmann and Block",
                     23.2,
                     1546185817,
-                    16,
+                    31337,
                     R.drawable.receipt7,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -249,9 +262,10 @@ class ReceiptsMockData {
                     "Lesch LLC",
                     36.12,
                     1550961934,
-                    17,
+                    31337,
                     R.drawable.receipt4,
-                    ""
+                    "",
+                    false
                 )
             )
             receiptList.add(
@@ -261,9 +275,10 @@ class ReceiptsMockData {
                     "Witting, Kertzmann and Lockman",
                     5.68,
                     1542972260,
-                    18,
+                    31337,
                     R.drawable.receipt8,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -274,9 +289,10 @@ class ReceiptsMockData {
                     "Lind-Gibson",
                     159.48,
                     1543160606,
-                    19,
+                    31337,
                     R.drawable.receipt9,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -288,9 +304,10 @@ class ReceiptsMockData {
                     "McKenzie, Langosh and D'Amore",
                     264.6,
                     1560995206,
-                    20,
+                    31337,
                     R.drawable.receipt10,
-                    ""
+                    "",
+                    false
                 )
             )
         }
