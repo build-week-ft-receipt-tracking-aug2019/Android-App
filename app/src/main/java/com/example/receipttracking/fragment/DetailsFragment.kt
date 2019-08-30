@@ -67,7 +67,7 @@ class DetailsFragment : Fragment() {
         the position is indicated in this part of the code by
         id, the Int value the method populate takes in
         */
-        tv_mock_id.text = currentReceipt.mockID.toString()
+        tv_mock_id.text ="" //currentReceipt.mockID.toString()
 
             //we'll take out the previous before we present tomorrow
 
