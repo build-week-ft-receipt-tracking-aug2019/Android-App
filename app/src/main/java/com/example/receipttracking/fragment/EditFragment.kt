@@ -72,7 +72,9 @@ class EditFragment : Fragment() {
             ev_merchant_name.text.toString(),
             cost,
             date,
-            id,
+            31337,
+            //this is where the code was getting set to -1 on new entries
+            //could have set it to receiptList.size
             0,
             uriS
         )
@@ -89,6 +91,7 @@ class EditFragment : Fragment() {
                 cost,
                 date,
                 receiptList[id].mockID,
+                ///this is where edited entries were getting set "correctly"
                 receiptList[id].receiptImage,
                 ""
             )
