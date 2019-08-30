@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.receipttracking.R
 import kotlinx.android.synthetic.main.activity_items_list.view.*
 import com.example.receipttracking.activities.DetailsActivity
-
-
-
+import com.example.receipttracking.model.utils
 
 
 class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
@@ -38,7 +36,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
         fun bindModel(receipt: Receipts) {
             textViewName.text = receipt.merchantName
             textViewAmount.text = receipt.cost.toString()
-            textViewDate.text = receipt.date.toString()
+            textViewDate.text = utils.fromDateLong(receipt.date)
 
 
 
