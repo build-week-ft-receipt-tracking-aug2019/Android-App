@@ -65,6 +65,7 @@ class EditFragment : Fragment() {
 
             var date = System.currentTimeMillis() / 1000L  //toDateLong(ev_date.text.toString()) ?
             var cost =1.00
+            //the following handles empty entries in amount field
             if (ev_amount.text.toString() !="") {
                 cost = ev_amount.text.toString().toDouble()
             }
@@ -81,7 +82,8 @@ class EditFragment : Fragment() {
                 //this is where the code was getting set to -1 on new entries
                 //could have set it to receiptList.size
                 0,
-                uriS
+                uriS,
+                false
             )
             if (NEW_ITEM_FLAG) {
                 editID = receiptList.size
@@ -98,7 +100,8 @@ class EditFragment : Fragment() {
                     receiptList[id].mockID,
                     ///this is where edited entries were getting set "correctly"
                     receiptList[id].receiptImage,
-                    ""
+                    "",
+                    false
                 )
                 receiptList[id] = newReceipt
             }

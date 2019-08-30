@@ -11,5 +11,6 @@ data class Receipts(
     var date: Long,
     var mockID:Int,
     var receiptImage:Int,
-    var receiptImageURI: String
+    var receiptImageURI: String,
+    var favorite:Boolean
 ) : Serializable

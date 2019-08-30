@@ -28,6 +28,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf= "@id/textView_past_receipts"
+        tools:listitem="@layout/activity_items_list"
 
         />
 

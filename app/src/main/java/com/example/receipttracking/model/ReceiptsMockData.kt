@@ -46,7 +46,8 @@ class ReceiptsMockData {
 
 
                     R.drawable.receipt1,
-                    ""
+                    "",
+                    false
 
                 )
             )
@@ -61,7 +62,8 @@ class ReceiptsMockData {
                     1559594970,
                     31337,
                     R.drawable.receipt2,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -75,7 +77,8 @@ class ReceiptsMockData {
                     1549543289,
                     31337,
                     R.drawable.receipt3,
-                    ""
+                    "",
+                    true
                 )
             )
             receiptList.add(
@@ -87,7 +90,8 @@ class ReceiptsMockData {
                     1555447238,
                     31337,
                     R.drawable.receipt6,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -100,7 +104,8 @@ class ReceiptsMockData {
                     1554225573,
                     31337,
                     R.drawable.receipt4,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -114,7 +119,8 @@ class ReceiptsMockData {
                     1556265103,
                     31337,
                     R.drawable.receipt5,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -127,7 +133,8 @@ class ReceiptsMockData {
                     1540639711,
                     31337,
                     R.drawable.receipt7,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -141,7 +148,8 @@ class ReceiptsMockData {
                     1558916915,
                     31337,
                     R.drawable.receipt8,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -155,7 +163,8 @@ class ReceiptsMockData {
                     1540168811,
                     31337,
                     R.drawable.receipt9,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -169,7 +178,8 @@ class ReceiptsMockData {
                     1550174938,
                     31337,
                     R.drawable.receipt10,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -183,7 +193,8 @@ class ReceiptsMockData {
                     1563718340,
                     31337,
                     R.drawable.receipt1,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -196,7 +207,8 @@ class ReceiptsMockData {
                     1538492734,
                     31337,
                     R.drawable.receipt2,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -209,7 +221,8 @@ class ReceiptsMockData {
                     1560000373,
                     31337,
                     R.drawable.receipt3,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -222,7 +235,8 @@ class ReceiptsMockData {
                     1554597668,
                     31337,
                     R.drawable.receipt4,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -235,7 +249,8 @@ class ReceiptsMockData {
                     1557126126,
                     31337,
                     R.drawable.receipt5,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -248,7 +263,8 @@ class ReceiptsMockData {
                     1546185817,
                     31337,
                     R.drawable.receipt7,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -261,7 +277,8 @@ class ReceiptsMockData {
                     1550961934,
                     31337,
                     R.drawable.receipt4,
-                    ""
+                    "",
+                    false
                 )
             )
             receiptList.add(
@@ -273,7 +290,8 @@ class ReceiptsMockData {
                     1542972260,
                     31337,
                     R.drawable.receipt8,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -286,7 +304,8 @@ class ReceiptsMockData {
                     1543160606,
                     31337,
                     R.drawable.receipt9,
-                    ""
+                    "",
+                    false
                 )
             )
 
@@ -300,7 +319,8 @@ class ReceiptsMockData {
                     1560995206,
                     31337,
                     R.drawable.receipt10,
-                    ""
+                    "",
+                    false
                 )
             )
         }

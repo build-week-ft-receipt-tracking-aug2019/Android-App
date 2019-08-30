@@ -40,6 +40,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
 
 
 
+
         }
 
 
@@ -63,7 +64,7 @@ class Adapter(val receiptList: MutableList<Receipts>) : RecyclerView.Adapter<Ada
         val receipt = receiptList[position]
        // ViewHolder.customView.setIDRef(position)
         ViewHolder.bindModel(receipt)
-
+   //     ViewHolder.customView.setPosition(position)
 
        ViewHolder.card.setOnClickListener { view ->
 
