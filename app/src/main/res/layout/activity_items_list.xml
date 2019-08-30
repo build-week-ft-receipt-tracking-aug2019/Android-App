@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="5dp">
+        android:padding="5sp">
 
         <TextView
             android:id="@+id/tv_name"
@@ -37,6 +37,15 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <com.example.receipttracking.CheckBoxView
+            android:id="@+id/customView_checkbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
